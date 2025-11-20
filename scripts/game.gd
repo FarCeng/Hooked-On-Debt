@@ -1,15 +1,16 @@
 extends Node2D
 
 @onready var bite_timer: Timer = $Timer
-@onready var reeling: Node2D = $Reeling
+@onready var reeling: Node = $Reeling
 @onready var fisher: AnimatedSprite2D = $FisherDude
 
 @export var min_wait := 1.0
-@export var max_wait := 4.0
+@export var max_wait := 6.0
 
 var state := "idle"  # idle, throwing, waiting, hooked, reeling, finish
 
 func _ready():
+	# setup
 	reeling.visible = false
 	bite_timer.one_shot = true
 	bite_timer.connect("timeout", Callable(self, "_on_bite"))
@@ -17,9 +18,30 @@ func _ready():
 	# defer checking sprite_frames to avoid race with editor assignment
 	call_deferred("_check_sprite_frames")
 
+	# connect reeling_finished signal safely (deferred so node tree ready)
+	call_deferred("_connect_reeling_signal")
+
 	# safe initial play if available
 	_play_anim_safe("still")
 	print("[INIT] Ready. State =", state)
+
+
+# ---------------- connect helper ----------------
+func _connect_reeling_signal() -> void:
+	if not is_instance_valid(reeling):
+		print("[CONNECT] reeling node not valid")
+		return
+	if not reeling.has_signal("reeling_finished"):
+		print("[CONNECT] reeling node has no 'reeling_finished' signal")
+		return
+
+	var cb := Callable(self, "_on_reeling_finished")
+	# is_connected expects the same Callable object that would be used to connect
+	if not reeling.is_connected("reeling_finished", cb):
+		reeling.connect("reeling_finished", cb)
+		print("[CONNECT] connected to reeling_finished")
+	else:
+		print("[CONNECT] already connected to reeling_finished")
 
 
 # ---------------- Input handler ----------------
@@ -29,6 +51,8 @@ func _input(event):
 		if event.keycode == KEY_SPACE:
 			print("[INPUT] Space pressed — calling cast()")
 			cast()
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		cast()
 	# fallback to action "cast" if user configured InputMap
 	if event.is_action_pressed("cast"):
 		print("[INPUT] Action 'cast' pressed — calling cast()")
@@ -45,12 +69,14 @@ func cast():
 	print("[CAST] Casting started!")
 	state = "throwing"
 	_play_anim_safe("throwing")
-	await get_tree().create_timer(2).timeout
-	
+
+	# small safety delay (optional)
+	await get_tree().create_timer(0.06).timeout
+
 	var dur = _get_anim_len_safe("throwing")
 	print("[CAST] Throwing duration =", dur)
-
-	await get_tree().create_timer(dur).timeout
+	if dur > 0.0:
+		await get_tree().create_timer(dur).timeout
 
 	print("[CAST] Done throwing → state = waiting")
 	state = "waiting"
@@ -71,35 +97,67 @@ func _on_bite():
 	state = "hooked"
 	print("[BITE] FISH HOOKED! → state = hooked")
 
-	# 1) Mainkan animasi reeling1 sekali
+	# 1) play reeling1 once
 	_play_anim_safe("reeling1")
-	await get_tree().create_timer(_get_anim_len_safe("reeling1")).timeout
-	await get_tree().create_timer(0.3).timeout
+	var r1_dur = _get_anim_len_safe("reeling1")
+	print("[BITE] reeling1 dur:", r1_dur)
+	if r1_dur > 0.0:
+		await get_tree().create_timer(r1_dur).timeout
 
+	# small buffer before popup so it's not jarring
+	await get_tree().create_timer(0.18).timeout
 
-	# 2) Tampilkan UI reeling
-	reeling.visible = true
-
-	# 3) MULAI mekanik reeling (VERY IMPORTANT)
-	if reeling.has_method("start_reeling"):
-		reeling.start_reeling()
+	# 2) show reeling UI and start its logic (call_deferred to be safe)
+	if is_instance_valid(reeling) and reeling.has_method("start_reeling"):
+		reeling.call_deferred("start_reeling")
+		print("[BITE] called start_reeling()")
 	else:
-		print("[ERROR] reeling node tidak punya fungsi start_reeling()")
+		# fallback: just show it and try to set visible
+		print("[BITE] reeling.start_reeling missing — fallback visible true")
+		if is_instance_valid(reeling):
+			reeling.visible = true
 
-	# 4) Loop animasi reeling2 selama mekanik berjalan
+	# 3) set state and loop reeling animation
 	state = "reeling"
 	_play_anim_safe("reeling2")
 
 
+# ---------------- Reeling finished signal handler ----------------
+func _on_reeling_finished(success: bool) -> void:
+	print("[SIGNAL] reeling_finished received. success=", success, " current_state=", state)
+
+	# only respond if we were in reeling/hooked state (avoid stray)
+	if state != "reeling" and state != "hooked":
+		print("[SIGNAL] ignoring because state =", state)
+		return
+
+	# defer actual finish to avoid re-entrancy
+	call_deferred("_deferred_finish_reeling", success)
+
+
+func _deferred_finish_reeling(success: bool) -> void:
+	# call the existing finish flow
+	finish_reeling(success)
+
 
 # ---------------- Finish reeling ----------------
-# call this from your reeling UI, e.g. reeling_node.finish_reeling(true/false)
+# call this to play result animation then return to idle
 func finish_reeling(is_success: bool):
+	# guard: if already idle, ignore
+	if state == "idle":
+		print("[FINISH] called but already idle — ignoring")
+		return
+
 	print("[FINISH] Reeling finished. Success =", is_success)
 
-	reeling.visible = false
+	# ensure UI hidden if not already
+	if is_instance_valid(reeling):
+		reeling.visible = false
+
+	# set intermediate state
 	state = "finish"
 
+	# play proper result anim
 	if is_success:
 		_play_anim_safe("succeed")
 	else:
@@ -109,7 +167,8 @@ func finish_reeling(is_success: bool):
 	var dur = _get_anim_len_safe(anim_name)
 	print("[FINISH] Playing", anim_name, "duration =", dur)
 
-	await get_tree().create_timer(dur).timeout
+	if dur > 0.0:
+		await get_tree().create_timer(dur).timeout
 
 	print("[FINISH] done. Returning to idle")
 	state = "idle"
@@ -152,6 +211,6 @@ func _check_sprite_frames() -> void:
 	if sf == null:
 		# print_err (not push_error) so debugger won't auto-break; informative for dev
 		print("[CHECK] AnimatedSprite2D has no SpriteFrames assigned on node:", fisher.name)
-		print("[HINT] Assign SpriteFrames in the Inspector (Frames property). See", "/mnt/data/7c2c46a3-85fa-4c8b-bd77-bc588f0c2ff1.png")
+		print("[HINT] Assign SpriteFrames in the Inspector (Frames property). See /mnt/data/7c2c46a3-85fa-4c8b-bd77-bc588f0c2ff1.png")
 	else:
 		print("[CHECK] SpriteFrames OK. Animations:", sf.get_animation_names())

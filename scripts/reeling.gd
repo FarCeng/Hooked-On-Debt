@@ -15,7 +15,7 @@ signal reeling_finished(success: bool)
 @onready var escape_timer: Timer = $EscapeTimer  # make sure you add this Timer child
 
 # config
-@export var speed_choices := [400,500,600,700,800,900,1000]
+@export var speed_choices := [1000,1100,1200,1300,1400,1500]
 @export var speed_increment := 100.0
 @export var escape_min := 5.0
 @export var escape_max := 10.0
