@@ -15,6 +15,8 @@ font_size = 40
 [node name="Reeling" type="Node2D"]
 script = ExtResource("1_pt8at")
 
+[node name="EscapeTimer" type="Timer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jtimv")
 
@@ -52,6 +54,7 @@ offset_bottom = 186.0
 action_mode = 0
 texture_normal = ExtResource("1_d1hdf")
 texture_pressed = ExtResource("5_hfcvh")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -144.0
@@ -60,3 +63,4 @@ offset_right = 141.0
 offset_bottom = 233.0
 text = "press to fish!"
 label_settings = SubResource("LabelSettings_jtimv")
+metadata/_edit_use_anchors_ = true

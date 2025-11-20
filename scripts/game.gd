@@ -45,7 +45,8 @@ func cast():
 	print("[CAST] Casting started!")
 	state = "throwing"
 	_play_anim_safe("throwing")
-
+	await get_tree().create_timer(2).timeout
+	
 	var dur = _get_anim_len_safe("throwing")
 	print("[CAST] Throwing duration =", dur)
 
@@ -70,17 +71,25 @@ func _on_bite():
 	state = "hooked"
 	print("[BITE] FISH HOOKED! → state = hooked")
 
+	# 1) Mainkan animasi reeling1 sekali
 	_play_anim_safe("reeling1")
+	await get_tree().create_timer(_get_anim_len_safe("reeling1")).timeout
+	await get_tree().create_timer(0.3).timeout
 
-	var dur = _get_anim_len_safe("reeling1")
-	print("[BITE] Playing reeling1 for", dur)
-	await get_tree().create_timer(dur).timeout
 
-	print("[BITE] Switching to REELING UI")
+	# 2) Tampilkan UI reeling
 	reeling.visible = true
 
+	# 3) MULAI mekanik reeling (VERY IMPORTANT)
+	if reeling.has_method("start_reeling"):
+		reeling.start_reeling()
+	else:
+		print("[ERROR] reeling node tidak punya fungsi start_reeling()")
+
+	# 4) Loop animasi reeling2 selama mekanik berjalan
 	state = "reeling"
-	_play_anim_safe("reeling2")  # loop animation
+	_play_anim_safe("reeling2")
+
 
 
 # ---------------- Finish reeling ----------------
