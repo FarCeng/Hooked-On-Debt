@@ -4,6 +4,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalData.load_all_data()
+	
+	print("Fish:", GlobalData.fish_data.size())
+	print("Quiz:", GlobalData.quiz_data.size())
+	
+	
 	pass # Replace with function body.
 
 
