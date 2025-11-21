@@ -1,16 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://butgp5an44sx3"]
 
 [ext_resource type="Texture2D" uid="uid://bxhvo6ue7wrf8" path="res://assets/images/reeling/fish button.png" id="1_d1hdf"]
-[ext_resource type="Script" uid="uid://dww3i5akrqcx7" path="res://scripts/reeling.gd" id="1_pt8at"]
+[ext_resource type="Script" path="res://scripts/reeling.gd" id="1_pt8at"]
 [ext_resource type="Texture2D" uid="uid://bju5wu7bj2ktd" path="res://assets/images/reeling/indikator ikan.png" id="2_hfcvh"]
 [ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="2_jtimv"]
 [ext_resource type="Texture2D" uid="uid://dxoj5mpuws540" path="res://assets/images/reeling/slider.png" id="3_3jl1c"]
 [ext_resource type="Texture2D" uid="uid://bmeuyvyoc2imf" path="res://assets/images/reeling/fish button-pressed.png" id="5_hfcvh"]
-[ext_resource type="FontFile" uid="uid://b1mq3mkctiy17" path="res://assets/font/JelloStone-YqKz8.ttf" id="6_3jl1c"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="6_3jl1c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jtimv"]
 font = ExtResource("6_3jl1c")
 font_size = 40
+shadow_size = 8
+shadow_offset = Vector2(1, 4)
 
 [node name="Reeling" type="Node2D"]
 script = ExtResource("1_pt8at")
