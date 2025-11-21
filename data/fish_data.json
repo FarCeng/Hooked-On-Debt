@@ -1,0 +1,34 @@
+[
+  {
+	"id": "fish_common",
+	"name": "Small Carp",
+	"price": 20,
+	"rarity": "common",
+	"weight": 50,
+	"story": "A weak little carp wandering too close to the shore..."
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Golden Minnow",
+	"price": 40,
+	"rarity": "uncommon",
+	"weight": 30,
+	"story": "Known for its shimmer, often mistaken for gold by rookies."
+  },
+  {
+	"id": "fish_rare",
+	"name": "Bluefin Pike",
+	"price": 100,
+	"rarity": "rare",
+	"weight": 15,
+	"story": "Usually hides deep underwater. You must be lucky!"
+  },
+  {
+	"id": "fish_legend",
+	"name": "Elder Leviathan",
+	"price": 300,
+	"rarity": "legend",
+	"weight": 5,
+	"story": "An ancient beast... some say it chooses who may catch it."
+  }
+]

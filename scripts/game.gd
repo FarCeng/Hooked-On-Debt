@@ -159,9 +159,14 @@ func finish_reeling(is_success: bool):
 
 	# play proper result anim
 	if is_success:
+		var fish = GlobalData.get_random_fish()
+		print("[DEBUG] GOT FISH:", fish)
+		# kamu bisa simpan juga:
+		GlobalData.current_fish = fish
 		_play_anim_safe("succeed")
 	else:
 		_play_anim_safe("fail")
+
 
 	var anim_name = "succeed" if is_success else "fail"
 	var dur = _get_anim_len_safe(anim_name)

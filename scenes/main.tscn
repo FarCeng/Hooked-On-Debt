@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt7ns6bb3sjgm"]
+[gd_scene load_steps=11 format=3 uid="uid://bt7ns6bb3sjgm"]
 
 [ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://3t86cuj3e8an" path="res://assets/images/ui/pause-pressed.png" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://jilwkht3w41v" path="res://assets/images/ui/turn, coin, hooks.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://b014lfjnuuure" path="res://assets/images/Coin.png" id="6_tipki"]
 [ext_resource type="FontFile" uid="uid://b1mq3mkctiy17" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="9_85g3d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
@@ -40,18 +42,26 @@ texture_pressed = ExtResource("3_tbgi4")
 position = Vector2(369, 280)
 texture = ExtResource("4_tipki")
 
+[node name="Coin" type="Sprite2D" parent="Turn,Coin,Hooks"]
+position = Vector2(5, -32)
+texture = ExtResource("6_tipki")
+
+[node name="Turn" type="Label" parent="Turn,Coin,Hooks"]
+offset_left = -85.0
+offset_top = -195.0
+offset_right = -39.0
+offset_bottom = -94.0
+text = "1"
+label_settings = SubResource("LabelSettings_tipki")
+
 [node name="RefrenceTurn,Coin,Hooks" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(369, 280)
 texture = ExtResource("5_85g3d")
 
-[node name="Turn" type="Label" parent="."]
-layout_mode = 0
-offset_left = 284.0
-offset_top = 85.0
-offset_right = 330.0
-offset_bottom = 186.0
-text = "1"
-label_settings = SubResource("LabelSettings_tipki")
+[node name="LowOpacity" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("9_85g3d")
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

@@ -1,16 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://butgp5an44sx3"]
 
 [ext_resource type="Texture2D" uid="uid://bxhvo6ue7wrf8" path="res://assets/images/reeling/fish button.png" id="1_d1hdf"]
-[ext_resource type="Script" uid="uid://dww3i5akrqcx7" path="res://scripts/reeling.gd" id="1_pt8at"]
+[ext_resource type="Script" path="res://scripts/reeling.gd" id="1_pt8at"]
 [ext_resource type="Texture2D" uid="uid://bju5wu7bj2ktd" path="res://assets/images/reeling/indikator ikan.png" id="2_hfcvh"]
-[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/Low Opacity.png" id="2_jtimv"]
+[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="2_jtimv"]
 [ext_resource type="Texture2D" uid="uid://dxoj5mpuws540" path="res://assets/images/reeling/slider.png" id="3_3jl1c"]
 [ext_resource type="Texture2D" uid="uid://bmeuyvyoc2imf" path="res://assets/images/reeling/fish button-pressed.png" id="5_hfcvh"]
-[ext_resource type="FontFile" uid="uid://b1mq3mkctiy17" path="res://assets/font/JelloStone-YqKz8.ttf" id="6_3jl1c"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="6_3jl1c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jtimv"]
 font = ExtResource("6_3jl1c")
 font_size = 40
+shadow_size = 8
+shadow_offset = Vector2(1, 4)
 
 [node name="Reeling" type="Node2D"]
 script = ExtResource("1_pt8at")
@@ -21,36 +23,36 @@ script = ExtResource("1_pt8at")
 texture = ExtResource("2_jtimv")
 
 [node name="bar" type="Sprite2D" parent="."]
-position = Vector2(0, -67.5)
+position = Vector2(0, 0.5)
 texture = ExtResource("2_hfcvh")
 
 [node name="arrow" type="Sprite2D" parent="."]
-position = Vector2(-414, -20.5)
+position = Vector2(-449, 47.5)
 texture = ExtResource("3_3jl1c")
 
 [node name="start" type="Marker2D" parent="."]
-position = Vector2(-450, -67.5)
+position = Vector2(-450, 0.5)
 
 [node name="normalstart" type="Marker2D" parent="."]
-position = Vector2(-213, -67.5)
+position = Vector2(-186, 0.5)
 
 [node name="end" type="Marker2D" parent="."]
-position = Vector2(450, -67.5)
+position = Vector2(450, 0.5)
 
 [node name="normalend" type="Marker2D" parent="."]
-position = Vector2(213, -67.5)
+position = Vector2(187, 0.5)
 
 [node name="rarestart" type="Marker2D" parent="."]
-position = Vector2(-37, -67.5)
+position = Vector2(-22, 0.5)
 
 [node name="rareend" type="Marker2D" parent="."]
-position = Vector2(37, -67.5)
+position = Vector2(23, 0.5)
 
 [node name="TextureButton" type="TextureButton" parent="."]
 offset_left = -96.0
-offset_top = 44.0
+offset_top = 112.0
 offset_right = 95.0
-offset_bottom = 186.0
+offset_bottom = 254.0
 action_mode = 0
 texture_normal = ExtResource("1_d1hdf")
 texture_pressed = ExtResource("5_hfcvh")
@@ -58,9 +60,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -144.0
-offset_top = 192.0
+offset_top = 260.0
 offset_right = 141.0
-offset_bottom = 233.0
+offset_bottom = 301.0
 text = "press to fish!"
 label_settings = SubResource("LabelSettings_jtimv")
 metadata/_edit_use_anchors_ = true
