@@ -12,12 +12,12 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	print("Start Pressed")
+	pass # Replace with function body.
 
 
-func _on_option_pressed() -> void:
-	print("Option Pressed")
+func _on_settings_pressed() -> void:
+	pass # Replace with function body.
 
 
-func _on_exit_pressed() -> void:
+func _on_quit_pressed() -> void:
 	get_tree().quit()
