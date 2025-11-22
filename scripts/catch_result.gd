@@ -13,6 +13,11 @@ signal finished(result: bool)
 @onready var lore_label: Label = $Succeed/LoreLabel
 @onready var name_label: Label = $Succeed/NameLabel
 
+var fish_texture_map := {
+	"ikan_salmon": preload("res://assets/images/fish/ikan_salmon.png"),
+	"ikan_tuna": preload("res://assets/images/fish/ikan_tuna.png")
+}
+
 # Variabel untuk menyimpan hasil saat ini
 var current_result: bool = false
 
@@ -44,23 +49,19 @@ func show_result(is_success: bool, fish_data: Dictionary = {}) -> void:
 		# --- Logika memuat gambar (dengan path dinamis) ---
 		var image_path = ""
 		var image_id = fish_data.get("image_id", "")
-		
 		if image_id == "":
 			push_warning("Warning: 'image_id' kosong di JSON.")
 			fish_texture.texture = null
 		else:
-			# Cek apakah image_id adalah path lengkap ("res://...")
-			if image_id.begins_with("res://"):
-				image_path = image_id
+			# Langsung cari di kamus
+			var preloaded_tex = fish_texture_map.get(image_id, null)
+			
+			if preloaded_tex != null:
+				fish_texture.texture = preloaded_tex # Berhasil!
 			else:
-				# Jika tidak, bangun path dari folder default
-				image_path = "res://assets/images/catchresult/" + image_id + ".png"
-				
-			# Load gambar
-			if FileAccess.file_exists(image_path):
-				fish_texture.texture = load(image_path)
-			else:
-				push_error("Error: Gambar ikan tidak ditemukan di path: " + image_path)
+				# Error ini berarti Anda salah ketik ID di JSON atau belum
+				# menambahkannya ke 'fish_texture_map' di atas
+				push_error("Error: Tekstur untuk ID '%s' tidak ditemukan di fish_texture_map." % image_id)
 				fish_texture.texture = null
 		# --- Akhir blok gambar ---
 			

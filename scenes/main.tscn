@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt7ns6bb3sjgm"]
+[gd_scene load_steps=12 format=3 uid="uid://bt7ns6bb3sjgm"]
 
 [ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b014lfjnuuure" path="res://assets/images/Coin.png" id="6_tipki"]
 [ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dacpyle0sf7ku" path="res://scenes/main_bgm.tscn" id="9_85g3d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
@@ -80,5 +81,8 @@ label_settings = SubResource("LabelSettings_85g3d")
 visible = false
 position = Vector2(369, 280)
 texture = ExtResource("5_85g3d")
+
+[node name="MainBGM" parent="." instance=ExtResource("9_85g3d")]
+visible = false
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

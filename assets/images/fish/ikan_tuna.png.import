@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cshe2u0bmq5ti"
-path="res://.godot/imported/ikan_salmon.png-5c8739eb7c63a75df2d42f03a9a2fc1c.ctex"
+uid="uid://n51uhrfiwn0f"
+path="res://.godot/imported/ikan_tuna.png-4ab7e55d6e00909b1413079fa5a53317.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/catchresult/ikan_salmon.png"
-dest_files=["res://.godot/imported/ikan_salmon.png-5c8739eb7c63a75df2d42f03a9a2fc1c.ctex"]
+source_file="res://assets/images/fish/ikan_tuna.png"
+dest_files=["res://.godot/imported/ikan_tuna.png-4ab7e55d6e00909b1413079fa5a53317.ctex"]
 
 [params]
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dacpyle0sf7ku"]
+
+[ext_resource type="AudioStream" uid="uid://cp7vv0o3k4dx3" path="res://assets/audios/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3" id="1_xmg2q"]
+
+[node name="MainBGM" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_xmg2q")
+volume_db = -6.398
+autoplay = true

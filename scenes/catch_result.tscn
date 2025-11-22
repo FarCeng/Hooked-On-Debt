@@ -53,28 +53,21 @@ visible = false
 position = Vector2(235.5, 298.5)
 texture = ExtResource("3_0t6l6")
 
-[node name="FishTexture" type="TextureRect" parent="Succeed"]
-layout_mode = 0
-offset_left = 123.5
-offset_top = 45.5
-offset_right = 346.5
-offset_bottom = 101.5
-
 [node name="CoinLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 248.5
-offset_top = 480.5
+offset_top = 459.5
 offset_right = 354.5
-offset_bottom = 524.5
+offset_bottom = 503.5
 text = "69"
 label_settings = SubResource("LabelSettings_y8clg")
 
 [node name="LoreLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 26.5
-offset_top = 539.5
+offset_top = 518.5
 offset_right = 442.5
-offset_bottom = 562.5
+offset_bottom = 541.5
 text = "THE LORE"
 label_settings = SubResource("LabelSettings_5w5qe")
 horizontal_alignment = 1
@@ -83,14 +76,27 @@ autowrap_mode = 2
 [node name="NameLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 26.5
-offset_top = 410.5
+offset_top = 381.5
 offset_right = 442.5
-offset_bottom = 451.5
+offset_bottom = 422.5
 text = "(FISH NAME)"
 label_settings = SubResource("LabelSettings_7mewt")
 horizontal_alignment = 1
 
+[node name="FishTexture" type="TextureRect" parent="Succeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34600002
+anchor_top = 0.215
+anchor_right = 0.34600002
+anchor_bottom = 0.215
+offset_left = -38.774002
+offset_top = -82.425
+offset_right = 184.226
+offset_bottom = -26.425003
+
 [node name="Fail" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
