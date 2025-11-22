@@ -5,7 +5,8 @@
 	"price": 20,
 	"rarity": "common",
 	"weight": 50,
-	"story": "A weak little carp wandering too close to the shore..."
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "ikan_salmon"
   },
   {
 	"id": "fish_uncommon",
@@ -13,7 +14,8 @@
 	"price": 40,
 	"rarity": "uncommon",
 	"weight": 30,
-	"story": "Known for its shimmer, often mistaken for gold by rookies."
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "ikan_salmon"
   },
   {
 	"id": "fish_rare",
@@ -21,7 +23,8 @@
 	"price": 100,
 	"rarity": "rare",
 	"weight": 15,
-	"story": "Usually hides deep underwater. You must be lucky!"
+	"lore": "Usually hides deep underwater. You must be lucky!",
+	"image_id": "ikan_tuna"
   },
   {
 	"id": "fish_legend",
@@ -29,6 +32,7 @@
 	"price": 300,
 	"rarity": "legend",
 	"weight": 5,
-	"story": "An ancient beast... some say it chooses who may catch it."
+	"lore": "An ancient beast... some say it chooses who may catch it.",
+	"image_id": "ikan_tuna"
   }
 ]

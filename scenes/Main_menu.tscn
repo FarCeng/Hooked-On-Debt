@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdjj7juh8e7n4"]
 
-[ext_resource type="Script" uid="uid://b4qubeqx1mswc" path="res://scenes/main_menu.gd" id="1_d1rr7"]
-[ext_resource type="Texture2D" uid="uid://dpc30kdxyx1f1" path="res://assets/Background.png" id="1_u5440"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_d1rr7"]
+[ext_resource type="Texture2D" uid="uid://dpc30kdxyx1f1" path="res://assets/images/Background.png" id="1_u5440"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1rr7"]
 texture = ExtResource("1_u5440")

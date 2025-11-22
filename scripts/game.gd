@@ -1,199 +1,339 @@
 extends Node2D
+# Manages the main fishing gameplay loop and state machine.
+# Mengatur alur gameplay utama (memancing) dan state machine.
 
+# --- SINYAL UNTUK UI UTAMA (main.gd) ---
+signal coins_changed(new_total: int)
+signal fish_count_changed(new_count: int)
+signal turn_changed(new_turn: int)
+
+# --- REFERENSI NODE (Diatur via CanvasLayers) ---
 @onready var bite_timer: Timer = $Timer
-@onready var reeling: Node = $Reeling
 @onready var fisher: AnimatedSprite2D = $FisherDude
 
+# Node UI ditempatkan di dalam CanvasLayer "PopupLayer"
+@onready var reeling: Node = $PopupLayer/Reeling
+@onready var quiz: Control = $PopupLayer/Quiz
+@onready var catch_result: Control = $PopupLayer/CatchResult
+
+# Background gelap ditempatkan di CanvasLayer "UILayer"
+@onready var low_opacity_bg: ColorRect = $UILayer/LowOpacityBg
+
+# --- KONFIGURASI ---
 @export var min_wait := 1.0
 @export var max_wait := 6.0
 
-var state := "idle"  # idle, throwing, waiting, hooked, reeling, finish
+# --- GAME STATE ---
+# State machine utama game.
+# (idle, throwing, waiting, hooked, reeling, showing_quiz, finish)
+var state := "idle"
+var _pending_fish : Variant = null # Ikan yg didapat, menunggu hasil kuis
 
-func _ready():
-	# setup
+# Data sesi lokal (direset jika ganti scene)
+var fish_count : int = 0
+var fish_inventory : Array = []
+
+
+# ===================================================
+# --- FUNGSI BAWAAN GODOT ---
+# ===================================================
+
+func _ready() -> void:
+	# Inisialisasi, hubungkan sinyal internal, dan emit state awal.
+	if GlobalData == null:
+		push_error("[INIT] WARNING: GlobalData Autoload TIDAK DITEMUKAN (null).")
+
+	# Setup node internal
 	reeling.visible = false
 	bite_timer.one_shot = true
-	bite_timer.connect("timeout", Callable(self, "_on_bite"))
+	bite_timer.connect("timeout", _on_bite)
 
-	# defer checking sprite_frames to avoid race with editor assignment
+	# Hubungkan sinyal dari node anak (via deferred call agar aman)
 	call_deferred("_check_sprite_frames")
-
-	# connect reeling_finished signal safely (deferred so node tree ready)
 	call_deferred("_connect_reeling_signal")
+	call_deferred("_connect_quiz_signal")
+	call_deferred("_connect_catch_result_signal")
 
-	# safe initial play if available
-	_play_anim_safe("still")
-	print("[INIT] Ready. State =", state)
+	_play_anim_safe("still") # Animasi idle awal
 
-
-# ---------------- connect helper ----------------
-func _connect_reeling_signal() -> void:
-	if not is_instance_valid(reeling):
-		print("[CONNECT] reeling node not valid")
-		return
-	if not reeling.has_signal("reeling_finished"):
-		print("[CONNECT] reeling node has no 'reeling_finished' signal")
-		return
-
-	var cb := Callable(self, "_on_reeling_finished")
-	# is_connected expects the same Callable object that would be used to connect
-	if not reeling.is_connected("reeling_finished", cb):
-		reeling.connect("reeling_finished", cb)
-		print("[CONNECT] connected to reeling_finished")
+	# Kirim data awal (dari GlobalData) ke UI (main.gd)
+	if GlobalData != null:
+		emit_signal("coins_changed", GlobalData.coins)
+		emit_signal("turn_changed", GlobalData.turn)
 	else:
-		print("[CONNECT] already connected to reeling_finished")
+		# Fallback jika GlobalData gagal load (misal: Run Scene F6)
+		emit_signal("coins_changed", 0)
+		emit_signal("turn_changed", 1)
+
+	emit_signal("fish_count_changed", fish_count)
 
 
-# ---------------- Input handler ----------------
-func _input(event):
-	# direct Space key (Godot 4 global KEY_SPACE)
+func _input(event) -> void:
+	# Meneruskan input ke fungsi 'cast' jika state sedang 'idle'
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_SPACE:
-			print("[INPUT] Space pressed — calling cast()")
 			cast()
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		cast()
-	# fallback to action "cast" if user configured InputMap
 	if event.is_action_pressed("cast"):
-		print("[INPUT] Action 'cast' pressed — calling cast()")
 		cast()
 
 
-# ---------------- Cast flow ----------------
-func cast():
-	print("[CAST] called. current state:", state)
-	if state != "idle":
-		print("[CAST] ignored — not idle")
-		return
+# ===================================================
+# --- PENANGAN SINYAL (SIGNAL HANDLERS) ---
+# ===================================================
 
-	print("[CAST] Casting started!")
-	state = "throwing"
-	_play_anim_safe("throwing")
+# Dipanggil oleh sinyal 'finished' dari CatchResult SETELAH pemain mengklik.
+func _on_catch_result_finished(result: bool) -> void:
+	# Tampilkan lagi fisher
+	if is_instance_valid(fisher):
+		fisher.visible = true
 
-	# small safety delay (optional)
-	await get_tree().create_timer(0.06).timeout
+	# Sembunyikan background gelap
+	if is_instance_valid(low_opacity_bg):
+		low_opacity_bg.hide()
 
-	var dur = _get_anim_len_safe("throwing")
-	print("[CAST] Throwing duration =", dur)
-	if dur > 0.0:
-		await get_tree().create_timer(dur).timeout
-
-	print("[CAST] Done throwing → state = waiting")
-	state = "waiting"
-	_play_anim_safe("waiting")
-
-	var wait_time = randf_range(min_wait, max_wait)
-	print("[WAITING] Timer started for", wait_time, "seconds")
-	bite_timer.start(wait_time)
-
-
-# ---------------- Bite / hook ----------------
-func _on_bite():
-	print("[_on_bite] timer timeout. current state:", state)
-	if state != "waiting":
-		print("[BITE] ignored, wrong state")
-		return
-
-	state = "hooked"
-	print("[BITE] FISH HOOKED! → state = hooked")
-
-	# 1) play reeling1 once
-	_play_anim_safe("reeling1")
-	var r1_dur = _get_anim_len_safe("reeling1")
-	print("[BITE] reeling1 dur:", r1_dur)
-	if r1_dur > 0.0:
-		await get_tree().create_timer(r1_dur).timeout
-
-	# small buffer before popup so it's not jarring
-	await get_tree().create_timer(0.18).timeout
-
-	# 2) show reeling UI and start its logic (call_deferred to be safe)
-	if is_instance_valid(reeling) and reeling.has_method("start_reeling"):
-		reeling.call_deferred("start_reeling")
-		print("[BITE] called start_reeling()")
+	# Mainkan animasi hasil (succeed/fail) dan TUNGGU (await)
+	if result:
+		await _play_anim_and_wait("succeed")
 	else:
-		# fallback: just show it and try to set visible
-		print("[BITE] reeling.start_reeling missing — fallback visible true")
-		if is_instance_valid(reeling):
-			reeling.visible = true
-
-	# 3) set state and loop reeling animation
-	state = "reeling"
-	_play_anim_safe("reeling2")
-
-
-# ---------------- Reeling finished signal handler ----------------
-func _on_reeling_finished(success: bool) -> void:
-	print("[SIGNAL] reeling_finished received. success=", success, " current_state=", state)
-
-	# only respond if we were in reeling/hooked state (avoid stray)
-	if state != "reeling" and state != "hooked":
-		print("[SIGNAL] ignoring because state =", state)
-		return
-
-	# defer actual finish to avoid re-entrancy
-	call_deferred("_deferred_finish_reeling", success)
-
-
-func _deferred_finish_reeling(success: bool) -> void:
-	# call the existing finish flow
-	finish_reeling(success)
-
-
-# ---------------- Finish reeling ----------------
-# call this to play result animation then return to idle
-func finish_reeling(is_success: bool):
-	# guard: if already idle, ignore
-	if state == "idle":
-		print("[FINISH] called but already idle — ignoring")
-		return
-
-	print("[FINISH] Reeling finished. Success =", is_success)
-
-	# ensure UI hidden if not already
-	if is_instance_valid(reeling):
-		reeling.visible = false
-
-	# set intermediate state
-	state = "finish"
-
-	# play proper result anim
-	if is_success:
-		var fish = GlobalData.get_random_fish()
-		print("[DEBUG] GOT FISH:", fish)
-		# kamu bisa simpan juga:
-		GlobalData.current_fish = fish
-		_play_anim_safe("succeed")
-	else:
-		_play_anim_safe("fail")
-
-
-	var anim_name = "succeed" if is_success else "fail"
-	var dur = _get_anim_len_safe(anim_name)
-	print("[FINISH] Playing", anim_name, "duration =", dur)
-
-	if dur > 0.0:
-		await get_tree().create_timer(dur).timeout
-
-	print("[FINISH] done. Returning to idle")
+		await _play_anim_and_wait("fail")
+		
+	# SETELAH animasi selesai, baru kembali ke state idle
 	state = "idle"
 	_play_anim_safe("still")
 
 
-# ---------------- Helpers (safe sprite_frames access) ----------------
+# Dipanggil oleh sinyal 'reeling_finished' dari Reeling.
+func _on_reeling_finished(success: bool) -> void:
+	# Hanya proses jika kita memang sedang reeling
+	if state != "reeling" and state != "hooked":
+		return
+	# Defer call untuk menghindari error "signal re-entrancy"
+	call_deferred("_deferred_finish_reeling", success)
+
+
+func _deferred_finish_reeling(success: bool) -> void:
+	finish_reeling(success) # Panggil alur logika utama
+
+
+# Dipanggil oleh sinyal 'quiz_done' dari Quiz.
+func _on_quiz_done(result: bool) -> void:
+	if is_instance_valid(quiz):
+		quiz.visible = false
+	
+	# Tampilkan lagi fisher (yang disembunyikan saat kuis)
+	if is_instance_valid(fisher):
+		fisher.visible = true
+	
+	state = "finish" # Masuk state "finish" (menunggu popup result)
+	
+	var fish = _pending_fish
+	_pending_fish = null
+
+	if fish == null:
+		push_warning("[GAME] Kuis selesai tapi _pending_fish kosong.")
+
+	if result:
+		# --- KUIS BENAR ---
+		if fish != null:
+			# Tambah data
+			fish_inventory.append(fish)
+			fish_count += 1
+			var price = int(fish.get("price", 0))
+
+			# Update GlobalData
+			if GlobalData != null:
+				GlobalData.add_coins(price)
+				emit_signal("coins_changed", GlobalData.coins)
+			
+			emit_signal("fish_count_changed", fish_count)
+			
+			# Tampilkan popup "Success"
+			if is_instance_valid(catch_result):
+				catch_result.show_result(true, fish) # Kirim data ikan
+		else:
+			# Kuis benar tapi tidak ada ikan? Aneh. Anggap gagal.
+			if is_instance_valid(catch_result):
+				catch_result.show_result(false)
+	
+	else:
+		# --- KUIS SALAH ---
+		if is_instance_valid(catch_result):
+			catch_result.show_result(false) # Tampilkan popup "Fail"
+	
+	# Game sekarang menunggu input di CatchResult, yang akan memicu
+	# sinyal 'finished' dan ditangani oleh '_on_catch_result_finished'.
+
+
+# ===================================================
+# --- STATE MACHINE (ALUR GAME) ---
+# ===================================================
+
+# Fungsi utama yg dipanggil oleh Input. Memulai alur memancing.
+func cast() -> void:
+	# 1. Cek State & Kondisi Game
+	if GlobalData.turn > GlobalData.max_turns:
+		return # Game sudah tamat
+	
+	if state != "idle":
+		return # Sedang sibuk (memancing, kuis, dll)
+
+	# 2. Cek Attempts (Usaha)
+	if GlobalData == null:
+		push_error("[CAST] GlobalData not found! Tidak bisa cek attempts.")
+	elif GlobalData.attempts <= 0:
+		# TODO: Tambahkan suara 'gagal' di sini jika mau
+		return # Attempts habis
+
+	# 3. Kurangi Attempt & Update UI
+	if GlobalData != null:
+		GlobalData.next_attempt()
+		# Emit sinyal agar UI 'turn' terupdate (jika attempts habis, turn bertambah)
+		emit_signal("turn_changed", GlobalData.turn)
+	
+	# 4. Mulai Alur Memancing
+	state = "throwing"
+	_play_anim_safe("throwing")
+
+	await get_tree().create_timer(0.06).timeout # Buffer singkat
+	var dur = _get_anim_len_safe("throwing")
+	if dur > 0.0:
+		await get_tree().create_timer(dur).timeout
+
+	# 5. Masuk State Menunggu
+	state = "waiting"
+	_play_anim_safe("waiting")
+	
+	var wait_time = randf_range(min_wait, max_wait)
+	bite_timer.start(wait_time)
+
+
+# Dipicu oleh Timer. Memulai mini-game reeling.
+func _on_bite() -> void:
+	if state != "waiting":
+		return # Input dibatalkan, dll.
+
+	state = "hooked"
+	
+	# Tampilkan background gelap
+	if is_instance_valid(low_opacity_bg):
+		low_opacity_bg.show()
+		
+	# Mainkan animasi "hooked"
+	_play_anim_safe("reeling1")
+	var r1_dur = _get_anim_len_safe("reeling1")
+	if r1_dur > 0.0:
+		await get_tree().create_timer(r1_dur).timeout
+
+	await get_tree().create_timer(0.18).timeout # Buffer
+
+	# Tampilkan mini-game reeling
+	if is_instance_valid(reeling) and reeling.has_method("start_reeling"):
+		reeling.call_deferred("start_reeling")
+	else:
+		push_warning("[BITE] reeling.start_reeling() tidak ditemukan.")
+		if is_instance_valid(reeling):
+			reeling.visible = true
+
+	# Masuk state "reeling" (looping animasi)
+	state = "reeling"
+	_play_anim_safe("reeling2")
+
+
+# Dipanggil oleh sinyal 'reeling_finished'. Menentukan lanjut ke Kuis atau Gagal.
+func finish_reeling(is_success: bool) -> void:
+	if state == "idle":
+		return # Sinyal telat, abaikan
+
+	if is_instance_valid(reeling):
+		reeling.visible = false
+	
+	# PAUSE animasi 'reeling2' di frame saat ini
+	fisher.stop() 
+
+	if is_success:
+		# --- REELING SUKSES -> Lanjut ke Kuis ---
+		state = "showing_quiz"
+		
+		var fish = null
+		if GlobalData != null and GlobalData.has_method("get_random_fish"):
+			fish = GlobalData.get_random_fish()
+		if fish == null or fish.is_empty(): # Fallback
+			fish = {"id":"fish_dummy","name":"Ikan Contoh","rarity":"common","price":10}
+		_pending_fish = fish # Simpan ikan untuk nanti
+
+		var question_data = null
+		if GlobalData != null and GlobalData.has_method("get_random_question"):
+			question_data = GlobalData.get_random_question()
+		if question_data == null or question_data.is_empty(): # Fallback
+			question_data = { "question": "Fallback?", "choices": ["A", "B", "C"], "answer": 1 }
+
+		if is_instance_valid(quiz) and quiz.has_method("start_question"):
+			quiz.visible = true
+			quiz.start_question(question_data, 10)
+			return # Game menunggu sinyal 'quiz_done'
+		else:
+			# Gagal memuat kuis, anggap sukses (fallback)
+			push_warning("[FINISH] Quiz node/fungsi start_question() tidak ditemukan.")
+			if is_instance_valid(catch_result):
+				catch_result.call_deferred("show_result", true, fish)
+			
+	else:
+		# --- REELING GAGAL ---
+		state = "finish" # Langsung ke state "finish"
+		if is_instance_valid(catch_result):
+			catch_result.call_deferred("show_result", false) # Tampilkan popup "Fail"
+		
+		# Game menunggu input di CatchResult
+		return
+
+
+# ===================================================
+# --- HELPERS ---
+# ===================================================
+
+# Helper untuk menghubungkan sinyal dari node anak
+func _connect_catch_result_signal() -> void:
+	if not is_instance_valid(catch_result):
+		push_warning("[CONNECT] CatchResult node not found")
+		return
+	var cb := Callable(self, "_on_catch_result_finished")
+	if not catch_result.is_connected("finished", cb):
+		catch_result.connect("finished", cb)
+
+func _connect_reeling_signal() -> void:
+	if not is_instance_valid(reeling):
+		push_warning("[CONNECT] reeling node not valid")
+		return
+	if not reeling.has_signal("reeling_finished"):
+		push_warning("[CONNECT] reeling node has no 'reeling_finished' signal")
+		return
+
+	var cb := Callable(self, "_on_reeling_finished")
+	if not reeling.is_connected("reeling_finished", cb):
+		reeling.connect("reeling_finished", cb)
+
+func _connect_quiz_signal() -> void:
+	if not is_instance_valid(quiz):
+		push_warning("[CONNECT] quiz node not found - quiz integration skipped")
+		return
+	var cb := Callable(self, "_on_quiz_done")
+	if not quiz.is_connected("quiz_done", cb):
+		quiz.connect("quiz_done", cb)
+
+# Helper untuk memainkan animasi dengan aman
 func _play_anim_safe(name: String) -> void:
 	if not is_instance_valid(fisher):
 		return
 	var sf = fisher.sprite_frames
 	if sf == null:
-		# no SpriteFrames assigned — skip playing but avoid crashing
 		return
 	if sf.has_animation(name):
 		fisher.play(name)
 
-
+# Helper untuk mendapatkan durasi animasi
 func _get_anim_len_safe(name: String) -> float:
-	# returns anim duration (seconds) or 0 if not available
 	if not is_instance_valid(fisher):
 		return 0.0
 	var sf = fisher.sprite_frames
@@ -207,15 +347,22 @@ func _get_anim_len_safe(name: String) -> float:
 		return 0.0
 	return float(frames) / float(fps)
 
-
+# Helper untuk mengecek SpriteFrames saat startup
 func _check_sprite_frames() -> void:
 	if not is_instance_valid(fisher):
-		print("[CHECK] fisher node not found")
+		push_warning("[CHECK] fisher node not found")
 		return
 	var sf = fisher.sprite_frames
 	if sf == null:
-		# print_err (not push_error) so debugger won't auto-break; informative for dev
-		print("[CHECK] AnimatedSprite2D has no SpriteFrames assigned on node:", fisher.name)
-		print("[HINT] Assign SpriteFrames in the Inspector (Frames property). See /mnt/data/7c2c46a3-85fa-4c8b-bd77-bc588f0c2ff1.png")
+		push_warning("[CHECK] AnimatedSprite2D has no SpriteFrames assigned on node: " + fisher.name)
+		print("[HINT] Assign SpriteFrames in the Inspector.")
+
+# Helper untuk memainkan animasi dan MENUNGGU (await) sampai selesai.
+func _play_anim_and_wait(name: String) -> void:
+	var dur = _get_anim_len_safe(name)
+	
+	if dur > 0.0:
+		_play_anim_safe(name)
+		await get_tree().create_timer(dur).timeout
 	else:
-		print("[CHECK] SpriteFrames OK. Animations:", sf.get_animation_names())
+		_play_anim_safe(name)

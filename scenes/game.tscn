@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://lns6rbjij21u"]
+[gd_scene load_steps=28 format=3 uid="uid://lns6rbjij21u"]
 
 [ext_resource type="PackedScene" uid="uid://butgp5an44sx3" path="res://scenes/reeling.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cugs50pw3qyh6" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://bk4eki3g7hw35" path="res://assets/images/BG.png" id="2_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://bahgyuylw5y4d" path="res://assets/images/BGadaorng.png" id="3_iywne"]
-[ext_resource type="Texture2D" uid="uid://bkufwd2l7fdkr" path="res://assets/Fisher.png" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bkufwd2l7fdkr" path="res://assets/images/Fisher.png" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bkpj5sgb68nia" path="res://scenes/quiz.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://o6atvsod0sci" path="res://scenes/catch_result.tscn" id="6_p57ef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
 atlas = ExtResource("4_p57ef")
@@ -163,19 +164,12 @@ _data = {
 &"waiting": SubResource("Animation_1kice")
 }
 
-[node name="Fishing" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("2_lbhrr")
-
-[node name="BGadaorng" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("3_iywne")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="FisherDude" type="AnimatedSprite2D" parent="."]
 position = Vector2(549, 539)
@@ -183,12 +177,39 @@ sprite_frames = SubResource("SpriteFrames_yqjtg")
 animation = &"fail"
 frame_progress = 0.9885282
 
-[node name="Reeling" parent="." instance=ExtResource("1_uwrxv")]
-visible = false
-position = Vector2(960, 540)
-metadata/_edit_lock_ = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_e1j6l")
 }
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="LowOpacityBg" type="ColorRect" parent="UILayer"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.16470589, 0.34901962, 0.49803922)
+
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Reeling" parent="PopupLayer" instance=ExtResource("1_uwrxv")]
+visible = false
+position = Vector2(960, 540)
+
+[node name="Quiz" parent="PopupLayer" instance=ExtResource("5_iywne")]
+visible = false
+
+[node name="CatchResult" parent="PopupLayer" instance=ExtResource("6_p57ef")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -960.0
+offset_top = -504.0
+offset_right = -960.0
+offset_bottom = -504.0
+grow_horizontal = 0
+grow_vertical = 0

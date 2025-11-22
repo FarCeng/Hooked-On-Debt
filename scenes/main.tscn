@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://jilwkht3w41v" path="res://assets/images/ui/turn, coin, hooks.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b014lfjnuuure" path="res://assets/images/Coin.png" id="6_tipki"]
-[ext_resource type="FontFile" uid="uid://b1mq3mkctiy17" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="9_85g3d"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
@@ -18,7 +17,14 @@ shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(0, 4)
 
-[node name="MainGame" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
+font = ExtResource("7_o6xl0")
+font_size = 39
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.09803922)
+shadow_offset = Vector2(1, 4)
+
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tefeu")
 
-[node name="Fishing" parent="." instance=ExtResource("1_tbgi4")]
+[node name="Game" parent="." instance=ExtResource("1_tbgi4")]
 
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -38,15 +44,15 @@ offset_bottom = 124.0
 texture_normal = ExtResource("3_o6xl0")
 texture_pressed = ExtResource("3_tbgi4")
 
-[node name="Turn,Coin,Hooks" type="Sprite2D" parent="."]
+[node name="TurnCoinHooks" type="Sprite2D" parent="."]
 position = Vector2(369, 280)
 texture = ExtResource("4_tipki")
 
-[node name="Coin" type="Sprite2D" parent="Turn,Coin,Hooks"]
+[node name="Coin" type="Sprite2D" parent="TurnCoinHooks"]
 position = Vector2(5, -32)
 texture = ExtResource("6_tipki")
 
-[node name="Turn" type="Label" parent="Turn,Coin,Hooks"]
+[node name="Turn" type="Label" parent="TurnCoinHooks"]
 offset_left = -85.0
 offset_top = -195.0
 offset_right = -39.0
@@ -54,14 +60,25 @@ offset_bottom = -94.0
 text = "1"
 label_settings = SubResource("LabelSettings_tipki")
 
+[node name="FishLabel" type="Label" parent="TurnCoinHooks"]
+offset_left = -177.0
+offset_top = -48.0
+offset_right = -134.0
+offset_bottom = -7.0
+text = "0"
+label_settings = SubResource("LabelSettings_85g3d")
+
+[node name="CoinLabel" type="Label" parent="TurnCoinHooks"]
+offset_left = 58.0
+offset_top = -48.0
+offset_right = 101.0
+offset_bottom = -7.0
+text = "0"
+label_settings = SubResource("LabelSettings_85g3d")
+
 [node name="RefrenceTurn,Coin,Hooks" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(369, 280)
 texture = ExtResource("5_85g3d")
-
-[node name="LowOpacity" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("9_85g3d")
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
