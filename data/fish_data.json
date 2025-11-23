@@ -1,34 +1,198 @@
 [
   {
 	"id": "fish_common",
-	"name": "Small Carp",
-	"price": 20,
+	"name": "Tatang Skena",
+	"price": 10,
 	"rarity": "common",
 	"weight": 50,
+<<<<<<< Updated upstream
 	"story": "A weak little carp wandering too close to the shore..."
+=======
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "tatang_skena"
+  },
+  {
+	"id": "fish_common",
+	"name": "Cecep Kolang Kaling",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "cecep_kolang_kaling"
+  },
+  {
+	"id": "fish_common",
+	"name": "Agus BPJS",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "agus_bpjs"
+  },
+  {
+	"id": "fish_common",
+	"name": "Mimi Prikitiw",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "mimi_prikitiw"
+  },
+  {
+	"id": "fish_common",
+	"name": "Asli Banjarmasin",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "asli_banjarmasin"
+  },
+  {
+	"id": "fish_common",
+	"name": "Listrik PLN",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "listrik_pln"
+  },
+  {
+	"id": "fish_common",
+	"name": "Nasi Padang",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "nasi_padang"
+  },
+  {
+	"id": "fish_common",
+	"name": "Oui Oui",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "oui_oui"
+  },
+  {
+	"id": "fish_common",
+	"name": "Habis Usia",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "habis_usia"
+  },
+  {
+	"id": "fish_common",
+	"name": "Honda Suzuki",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "A weak little carp wandering too close to the shore...",
+	"image_id": "honda_suzuki"
+>>>>>>> Stashed changes
   },
   {
 	"id": "fish_uncommon",
-	"name": "Golden Minnow",
-	"price": 40,
+	"name": "Koin Choco 1 Fih",
+	"price": 15,
 	"rarity": "uncommon",
 	"weight": 30,
+<<<<<<< Updated upstream
 	"story": "Known for its shimmer, often mistaken for gold by rookies."
+=======
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "koin_choco_1_fih"
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Area 51",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "area_51"
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Miku Fih",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "miku_fih"
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Stonks",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "stonks"
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Gojo Siregar",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "gojo_siregar"
+  },
+  {
+	"id": "fish_uncommon",
+	"name": "Fididdy",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "Known for its shimmer, often mistaken for gold by rookies.",
+	"image_id": "fididdy"
+>>>>>>> Stashed changes
   },
   {
 	"id": "fish_rare",
-	"name": "Bluefin Pike",
-	"price": 100,
+	"name": "Employment Paper",
+	"price": 20,
 	"rarity": "rare",
 	"weight": 15,
+<<<<<<< Updated upstream
 	"story": "Usually hides deep underwater. You must be lucky!"
+=======
+	"lore": "Usually hides deep underwater. You must be lucky!",
+	"image_id": "employment_paper"
+  },
+  {
+	"id": "fish_rare",
+	"name": "Party",
+	"price": 20,
+	"rarity": "rare",
+	"weight": 15,
+	"lore": "Usually hides deep underwater. You must be lucky!",
+	"image_id": "party"
+  },
+  {
+	"id": "fish_rare",
+	"name": "Tupperware Emak yang Hilang",
+	"price": 20,
+	"rarity": "rare",
+	"weight": 15,
+	"lore": "Usually hides deep underwater. You must be lucky!",
+	"image_id": "tupperware_emak_yg_hilang"
+>>>>>>> Stashed changes
   },
   {
 	"id": "fish_legend",
-	"name": "Elder Leviathan",
-	"price": 300,
+	"name": "Stella",
+	"price": 50,
 	"rarity": "legend",
 	"weight": 5,
+<<<<<<< Updated upstream
 	"story": "An ancient beast... some say it chooses who may catch it."
+=======
+	"lore": "An ancient beast... some say it chooses who may catch it.",
+	"image_id": "stella"
+>>>>>>> Stashed changes
   }
 ]
