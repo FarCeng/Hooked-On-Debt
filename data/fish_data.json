@@ -1,0 +1,182 @@
+[
+  {
+	"id": "fish_common_1",
+	"name": "Agus BRJS",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "I still remember that day…",
+	"image_id": "Agus BRJS"
+  },
+  {
+	"id": "fish_common_2",
+	"name": "Asli Banjarmasin",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "The sky was red as blood.",
+	"image_id": "Asli banjarmasin"
+  },
+  {
+	"id": "fish_common_3",
+	"name": "Cecep Kolang Kaling",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "In order to save ourselves, our nation, we went to the Observer Tower.",
+	"image_id": "cecep kolang kaling"
+  },
+  {
+	"id": "fish_common_4",
+	"name": "Habis Usia",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "“Princess… Are you sure about this?”",
+	"image_id": "Habis Usia"
+  },
+  {
+	"id": "fish_common_5",
+	"name": "Honda Suzuki",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "“Yes, of course. It’s for our own good.”",
+	"image_id": "honda suzuki"
+  },
+  {
+	"id": "fish_common_6",
+	"name": "Listrik PLN",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "“But, your soul will…”",
+	"image_id": "Listrik PLN"
+  },
+  {
+	"id": "fish_common_7",
+	"name": "Mimi Prikitw",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "“Head up! You shall not worry!”",
+	"image_id": "Mimi Prikitw"
+  },
+  {
+	"id": "fish_common_8",
+	"name": "Nasi Padang",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "Deep inside, I wanna cry.",
+	"image_id": "Nasi Padang"
+  },
+  {
+	"id": "fish_common_9",
+	"name": "Oui Oui",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "Our nation will be razed to the ground…",
+	"image_id": "Oui Oui"
+  },
+  {
+	"id": "fish_common_10",
+	"name": "Tatang Skena",
+	"price": 10,
+	"rarity": "common",
+	"weight": 50,
+	"lore": "I don’t wanna be a spoiled princess anymore…",
+	"image_id": "Tatang skena"
+  },
+  {
+	"id": "fish_uncommon_1",
+	"name": "Area 51",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "I believe I can do something about this…",
+	"image_id": "Area 51"
+  },
+  {
+	"id": "fish_uncommon_2",
+	"name": "Fididdy",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "“Dietrich, we have no other choice…”",
+	"image_id": "Fididdy"
+  },
+  {
+	"id": "fish_uncommon_3",
+	"name": "Gojo Siregar",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "“I understand, Princess. I’ll hold it for you. If possible, please be safe.”",
+	"image_id": "Gojo Siregar"
+  },
+  {
+	"id": "fish_uncommon_4",
+	"name": "Koin Choco 1 Fih",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "With a wry smile, I left Dietrich, and went to the All-Seeing Altar.",
+	"image_id": "koin choco 1 fih"
+  },
+  {
+	"id": "fish_uncommon_5",
+	"name": "Miku Fih",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "“O, Observer of Many Worlds! I offer mine, and thou givest thine!”",
+	"image_id": "Miku Fih"
+  },
+  {
+	"id": "fish_uncommon_6",
+	"name": "Stonks",
+	"price": 15,
+	"rarity": "uncommon",
+	"weight": 30,
+	"lore": "It felt like my soul was being held by something.",
+	"image_id": "Stonks"
+  },
+  {
+	"id": "fish_rare_1",
+	"name": "Employment Paper",
+	"price": 20,
+	"rarity": "rare",
+	"weight": 15,
+	"lore": "“O, Observer of Many Worlds! Take us unto some place that is safe!”",
+	"image_id": "employment paper"
+  },
+  {
+	"id": "fish_rare_2",
+	"name": "Party",
+	"price": 20,
+	"rarity": "rare",
+	"weight": 15,
+	"lore": "Suddenly, I fainted and woke up as something I didn't understand .",
+	"image_id": "party"
+  },
+  {
+	"id": "fish_rare_3",
+	"name": "Tupperware Yg Hilang",
+	"price": 20,
+	"rarity": "rare",
+	"weight": 15,
+	"lore": "With a watery body and only consciousness that has left.",
+	"image_id": "tupperware yg hilang"
+  },
+  {
+	"id": "fish_legend_1",
+	"name": "Stella",
+	"price": 50,
+	"rarity": "legend",
+	"weight": 5,
+	"lore": "Sometimes, I wonder whether my decision was right or not.",
+	"image_id": "Stella"
+  }
+]

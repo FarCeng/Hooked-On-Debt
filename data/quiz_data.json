@@ -1,0 +1,22 @@
+[
+  {
+	"question": "What is 2 + 2?",
+	"choices": ["3", "4", "5"],
+	"answer": 1
+  },
+  {
+	"question": "What color is the sky?",
+	"choices": ["Blue", "Red", "Green"],
+	"answer": 0
+  },
+  {
+	"question": "Which one is a fish?",
+	"choices": ["Salmon", "Chicken", "Cat"],
+	"answer": 0
+  },
+  {
+	"question": "Which is heavier?",
+	"choices": ["1 kg iron", "1 kg cotton", "same weight"],
+	"answer": 2
+  }
+]

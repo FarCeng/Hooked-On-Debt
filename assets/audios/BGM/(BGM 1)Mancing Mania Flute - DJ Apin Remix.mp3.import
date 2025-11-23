@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fqd8ihmkgwbq"
+path="res://.godot/imported/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3-3d9c1f9e9a0f65e64cf3f126fbfd5f66.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/BGM/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3"
+dest_files=["res://.godot/imported/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3-3d9c1f9e9a0f65e64cf3f126fbfd5f66.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
