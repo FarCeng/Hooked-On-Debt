@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkc8jibjuk0ts"
+path="res://.godot/imported/lempar kail.wav-9392f32f5dbe7a9f94f8f6f92510bde6.sample"
+
+[deps]
+
+source_file="res://assets/audios/SFX/lempar kail.wav"
+dest_files=["res://.godot/imported/lempar kail.wav-9392f32f5dbe7a9f94f8f6f92510bde6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

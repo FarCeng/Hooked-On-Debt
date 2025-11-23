@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cv1qx7ajlhnkw"
+path="res://.godot/imported/ga dapet ikan.wav-fbf53c719ccfe2b52deb373409891f86.sample"
+
+[deps]
+
+source_file="res://assets/audios/SFX/ga dapet ikan.wav"
+dest_files=["res://.godot/imported/ga dapet ikan.wav-fbf53c719ccfe2b52deb373409891f86.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
