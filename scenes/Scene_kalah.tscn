@@ -1,0 +1,422 @@
+[gd_scene load_steps=29 format=3 uid="uid://tccn0j8d7g66"]
+
+[ext_resource type="Script" uid="uid://cv2tnt8wpp1ej" path="res://scripts/Scene_kalah.gd" id="1_au0f3"]
+[ext_resource type="Texture2D" uid="uid://d3iunob5gdpxf" path="res://assets/Image/cut scene/Cutscene kalah 1.png" id="2_ovmul"]
+[ext_resource type="Texture2D" uid="uid://byw76wd1n24di" path="res://assets/Image/cut scene/Hideung asli.png" id="3_3153u"]
+[ext_resource type="AudioStream" uid="uid://btr3mrskumnb4" path="res://assets/Dub/[1 kalah]MC _ No… the money… the money is not enough….mp3" id="3_jemdt"]
+[ext_resource type="Texture2D" uid="uid://bq4r3t4x52f02" path="res://assets/Image/cut scene/Cutscene kalah 2.png" id="4_gmufs"]
+[ext_resource type="AudioStream" uid="uid://c3uhym5ufl4gx" path="res://assets/Dub/[2 kalah]MC _ How will i pay my debt.mp3" id="4_t5ncu"]
+[ext_resource type="AudioStream" uid="uid://bprlbare5xby6" path="res://assets/Dub/[3 kalah]MC _ No…..mp3" id="5_mguqm"]
+[ext_resource type="Texture2D" uid="uid://dsfij0l7f2l5v" path="res://assets/Image/skip button.png" id="5_ovmul"]
+[ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="7_mur4o"]
+[ext_resource type="AudioStream" uid="uid://b24ix5fuejgdu" path="res://assets/Dub/[1 Kalah]DC So, how is it.mp3" id="8_7sxqx"]
+[ext_resource type="AudioStream" uid="uid://dje5jdwmardj" path="res://assets/Dub/[2 Kalah]DC Ya get the money.mp3" id="9_7bjsj"]
+[ext_resource type="AudioStream" uid="uid://bhylu1wpt55bn" path="res://assets/Dub/[4 kalah]MC _ Can.. can we make a new deal_.mp3" id="10_dlfkl"]
+[ext_resource type="AudioStream" uid="uid://b5gy4lmw0fsx8" path="res://assets/Dub/[3 Kalah]DC Nope, the deal was you paid for 2000 within 6 days.mp3" id="11_kt6h5"]
+[ext_resource type="AudioStream" uid="uid://qxpoepv671hg" path="res://assets/Dub/[4 Kalah]DC And if not, you know what happens next..mp3" id="13_euq3i"]
+[ext_resource type="AudioStream" uid="uid://2dlrk1pnhor6" path="res://assets/Dub/[5 Kalah]DC It is something that you wish would never happen..mp3" id="14_2nyxf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn4pb"]
+texture = ExtResource("2_ovmul")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fe223"]
+texture = ExtResource("2_ovmul")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcw7x"]
+texture = ExtResource("2_ovmul")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tilww"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m884l"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brp0e"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_msvpp"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jemdt"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5ncu"]
+texture = ExtResource("3_3153u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mguqm"]
+texture = ExtResource("4_gmufs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mur4o"]
+texture = ExtResource("4_gmufs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3153u"]
+bg_color = Color(0, 0.16470589, 0.34901962, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmufs"]
+bg_color = Color(0, 0.16470589, 0.34901962, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_au0f3")
+
+[node name="Cutscene 1" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nn4pb")
+
+[node name="Label" type="Label" parent="Cutscene 1"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "No… the money… the money is not enough…"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 1"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 1"]
+stream = ExtResource("3_jemdt")
+
+[node name="Cutscene 2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fe223")
+
+[node name="Label" type="Label" parent="Cutscene 2"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "How will I pay my debt…."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 2"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 2"]
+stream = ExtResource("4_t5ncu")
+
+[node name="Cutscene 3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rcw7x")
+
+[node name="Label" type="Label" parent="Cutscene 3"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "No… "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 3"]
+stream = ExtResource("5_mguqm")
+
+[node name="Cutscene 4" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tilww")
+
+[node name="Label" type="Label" parent="Cutscene 4"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "(Telephone ringing)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 4"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 4"]
+stream = ExtResource("7_mur4o")
+
+[node name="Cutscene 5" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m884l")
+
+[node name="Label" type="Label" parent="Cutscene 5"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "(Pickup the telephone)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 5"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 5"]
+
+[node name="Cutscene 6" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_brp0e")
+
+[node name="Label" type="Label" parent="Cutscene 6"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "So, how is it?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 6"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 6"]
+stream = ExtResource("8_7sxqx")
+
+[node name="Cutscene 7" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_msvpp")
+
+[node name="Label" type="Label" parent="Cutscene 7"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Ya get the money?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 7"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 7"]
+stream = ExtResource("9_7bjsj")
+
+[node name="Cutscene 8" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jemdt")
+
+[node name="Label" type="Label" parent="Cutscene 8"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Can.. can we make a new deal?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 8"]
+stream = ExtResource("10_dlfkl")
+
+[node name="Cutscene 9" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t5ncu")
+
+[node name="Label" type="Label" parent="Cutscene 9"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Nope, the deal was you paid for 2000 within 6 days."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 9"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 9"]
+stream = ExtResource("11_kt6h5")
+
+[node name="Cutscene 10" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mguqm")
+
+[node name="Label" type="Label" parent="Cutscene 10"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "And if not, you know what happens next."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 10"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 10"]
+stream = ExtResource("13_euq3i")
+
+[node name="Cutscene 11" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mur4o")
+
+[node name="Label" type="Label" parent="Cutscene 11"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "It is something that you wish would never happen."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 11"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 11"]
+stream = ExtResource("14_2nyxf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3153u")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmufs")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 1655.0
+offset_top = 17.0
+offset_right = 1875.0
+offset_bottom = 100.0
+texture_normal = ExtResource("5_ovmul")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qxpoepv671hg"
+path="res://.godot/imported/[4 Kalah]DC And if not, you know what happens next..mp3-6bfa8efb34849233327edab044c4868e.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[4 Kalah]DC And if not, you know what happens next..mp3"
+dest_files=["res://.godot/imported/[4 Kalah]DC And if not, you know what happens next..mp3-6bfa8efb34849233327edab044c4868e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
