@@ -1,7 +1,7 @@
 extends Control
 
 var cutscenes = []
-var durations = [3.0, 3.5, 4.0, 6.5, 5.0, 5.0, 3.5, 5.0, 6.0, 4.0, 7.0, 6.0]
+var durations = [6.0, 5.0, 3.0, 5.0, 3.5, 7.0, 4.5, 5.0]
 var index := 0
 
 func _ready():
@@ -13,11 +13,7 @@ func _ready():
 		$"Cutscene 5",
 		$"Cutscene 6",
 		$"Cutscene 7",
-		$"Cutscene 8",
-		$"Cutscene 9",
-		$"Cutscene 10",
-		$"Cutscene 11",
-		$"Cutscene 12"
+		$"Cutscene 8"
 	]
 
 	for c in cutscenes:

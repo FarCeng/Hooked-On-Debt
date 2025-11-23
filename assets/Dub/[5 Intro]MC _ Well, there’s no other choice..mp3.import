@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://l5iws1rh1mqx"
+path="res://.godot/imported/[5 Intro]MC _ Well, there’s no other choice..mp3-36c341922d57b30deb43ac2d0b08078c.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[5 Intro]MC _ Well, there’s no other choice..mp3"
+dest_files=["res://.godot/imported/[5 Intro]MC _ Well, there’s no other choice..mp3-36c341922d57b30deb43ac2d0b08078c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

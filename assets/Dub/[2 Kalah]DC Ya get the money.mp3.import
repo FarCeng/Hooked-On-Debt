@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dje5jdwmardj"
+path="res://.godot/imported/[2 Kalah]DC Ya get the money.mp3-d8008fc4630f67ae2f99ee5402ce9f26.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[2 Kalah]DC Ya get the money.mp3"
+dest_files=["res://.godot/imported/[2 Kalah]DC Ya get the money.mp3-d8008fc4630f67ae2f99ee5402ce9f26.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

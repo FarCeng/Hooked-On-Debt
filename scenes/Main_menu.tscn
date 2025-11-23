@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1rs1fe70623g"]
+[gd_scene load_steps=9 format=3 uid="uid://c1rs1fe70623g"]
 
 [ext_resource type="Script" uid="uid://gxo5mjlgnqo0" path="res://scripts/main_menu.gd" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://duuj0khawij81" path="res://assets/Image/start page buttons/Variant6.png" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://tcjvaf38cmus" path="res://assets/Image/start page buttons/Variant5.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://1dur7ln5i6ey" path="res://assets/Image/Main Menu.png" id="2_oa1go"]
 [ext_resource type="Texture2D" uid="uid://buseyb0eaxktw" path="res://assets/Image/start page buttons/Variant4.png" id="3_rtw2f"]
 [ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/Font/JelloStone-YqKz8.ttf" id="4_oa1go"]
-[ext_resource type="AudioStream" uid="uid://bvxqlf2ije1xt" path="res://assets/Music/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3" id="6_rtw2f"]
+[ext_resource type="AudioStream" uid="uid://c6nk8155nkl4u" path="res://assets/Music/mementomancing.mp3" id="7_oa1go"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
-bg_color = Color(0.30588236, 0.5921569, 0.28235295, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = ExtResource("2_oa1go")
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -25,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbmy8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -34,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -160.0
-offset_right = 256.0
-offset_bottom = 342.0
+offset_left = -685.0
+offset_top = -99.0
+offset_right = -173.0
+offset_bottom = 403.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -59,17 +61,17 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -370.5
-offset_top = 66.0
-offset_right = 370.5
-offset_bottom = 163.0
+offset_left = -803.0
+offset_top = 214.0
+offset_right = -62.0
+offset_bottom = 311.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_oa1go")
 theme_override_font_sizes/font_size = 96
-text = "HOOKED IN DEBT"
+text = "HOOKED ON DEBT!"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_rtw2f")
+stream = ExtResource("7_oa1go")
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]

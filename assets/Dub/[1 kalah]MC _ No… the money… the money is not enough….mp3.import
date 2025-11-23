@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btr3mrskumnb4"
+path="res://.godot/imported/[1 kalah]MC _ No… the money… the money is not enough….mp3-83a9e5c0ef4c71c95c04626bacf0c673.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[1 kalah]MC _ No… the money… the money is not enough….mp3"
+dest_files=["res://.godot/imported/[1 kalah]MC _ No… the money… the money is not enough….mp3-83a9e5c0ef4c71c95c04626bacf0c673.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

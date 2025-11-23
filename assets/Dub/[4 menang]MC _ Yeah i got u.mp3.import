@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gs0r67j5lvte"
+path="res://.godot/imported/[4 menang]MC _ Yeah i got u.mp3-5ce129c05d1ee12b3b6d3fac3c1b66fb.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[4 menang]MC _ Yeah i got u.mp3"
+dest_files=["res://.godot/imported/[4 menang]MC _ Yeah i got u.mp3-5ce129c05d1ee12b3b6d3fac3c1b66fb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
