@@ -25,3 +25,7 @@ func play_bgm_for_turn(turn_number: int) -> void:
 		if is_instance_valid(fallback_bgm) and not fallback_bgm.is_playing():
 			print("--- AUDIO DEBUG: Memainkan BGM fallback (Turn 1).")
 			fallback_bgm.play()
+
+func stop_all_bgm() -> void:
+	print("--- AUDIO DEBUG: Menghentikan semua BGM.")
+	get_tree().call_group("BGM", "stop")

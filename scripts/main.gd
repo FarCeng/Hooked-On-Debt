@@ -72,6 +72,8 @@ func _on_game_turn_transition_needed(current_turn: int, max_turns: int) -> void:
 
 # Dipanggil oleh sinyal "game_over_stats" dari game.gd
 func _on_game_game_over_stats(is_win: bool, final_coins: int, total_fish: int) -> void:
+	if is_instance_valid(audio_manager):
+		audio_manager.stop_all_bgm()
 	game_over_screen.show_results(is_win, final_coins, total_fish)
 
 # Dipanggil oleh sinyal "finished" dari TurnTransition (saat diklik)
