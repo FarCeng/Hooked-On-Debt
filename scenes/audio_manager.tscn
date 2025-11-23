@@ -1,0 +1,68 @@
+[gd_scene load_steps=16 format=3 uid="uid://d07nonptrtsj6"]
+
+[ext_resource type="Script" uid="uid://dktuoo0a0l7un" path="res://scripts/audio_manager.gd" id="1_064dn"]
+[ext_resource type="AudioStream" uid="uid://d0nj4h33gicfk" path="res://assets/audios/SFX/menang.wav" id="1_kq7b2"]
+[ext_resource type="AudioStream" uid="uid://xv5rcpijqf2d" path="res://assets/audios/SFX/uhuyy.wav" id="2_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://cxlckggkqu68u" path="res://assets/audios/SFX/click.wav" id="3_02gw7"]
+[ext_resource type="AudioStream" uid="uid://bsmhogbcmeqg5" path="res://assets/audios/SFX/tombol fish.wav" id="3_ujhup"]
+[ext_resource type="AudioStream" uid="uid://bk7iacuv2w2ol" path="res://assets/audios/SFX/30sec timer quiz.wav" id="4_ujhup"]
+[ext_resource type="AudioStream" uid="uid://cciytr6wn2oay" path="res://assets/audios/SFX/watersplash.wav" id="6_064dn"]
+[ext_resource type="AudioStream" uid="uid://dikg8t3us3xag" path="res://assets/audios/SFX/fishreel.ogg" id="7_02gw7"]
+[ext_resource type="AudioStream" uid="uid://cv1qx7ajlhnkw" path="res://assets/audios/SFX/ga dapet ikan.wav" id="7_ic5jq"]
+[ext_resource type="AudioStream" uid="uid://fqd8ihmkgwbq" path="res://assets/audios/BGM/(BGM 1)Mancing Mania Flute - DJ Apin Remix.mp3" id="10_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://dg5lxj1o24fth" path="res://assets/audios/BGM/diesirae.ogg" id="11_ic5jq"]
+[ext_resource type="AudioStream" uid="uid://bpiariovpqvbw" path="res://assets/audios/BGM/doraemon.ogg" id="12_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://cm442l7mmvlcw" path="res://assets/audios/BGM/konosuba1.ogg" id="13_oucy0"]
+[ext_resource type="AudioStream" uid="uid://dph5p0k458no6" path="res://assets/audios/BGM/lovestory.ogg" id="14_cuol6"]
+[ext_resource type="AudioStream" uid="uid://bg6ujqst4xpfw" path="res://assets/audios/BGM/mementomancing.ogg" id="15_m1k83"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_064dn")
+
+[node name="succeed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_kq7b2")
+
+[node name="reel_button_click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ujhup")
+
+[node name="UI_button_clik" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_02gw7")
+
+[node name="timer_30sec" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ujhup")
+
+[node name="fisherdude_happy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_m6ggh")
+
+[node name="water_splash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_064dn")
+
+[node name="reeling" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_02gw7")
+
+[node name="fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ic5jq")
+
+[node name="BGM_Turn1" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("10_2y5yn")
+volume_db = -25.0
+
+[node name="BGM_Turn2" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("11_ic5jq")
+volume_db = -25.0
+
+[node name="BGM_Turn3" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("12_2y5yn")
+volume_db = -25.0
+
+[node name="BGM_Turn4" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("13_oucy0")
+volume_db = -25.0
+
+[node name="BGM_Turn5" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("14_cuol6")
+volume_db = -25.0
+
+[node name="BGM_Turn6" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
+stream = ExtResource("15_m1k83")
+volume_db = -25.0

@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxs2akapf5yii"]
+
+[ext_resource type="Script" uid="uid://dxp43524ikd7l" path="res://scripts/game_over.gd" id="1_irg28"]
+[ext_resource type="PackedScene" uid="uid://d07nonptrtsj6" path="res://scenes/audio_manager.tscn" id="2_irg28"]
+[ext_resource type="Texture2D" uid="uid://ce1nrmqkkcn4v" path="res://assets/images/ui/game_over_succeed.png" id="2_v3hpu"]
+[ext_resource type="Texture2D" uid="uid://cjq7160spa4ut" path="res://assets/images/ui/game_over_fail.png" id="3_irg28"]
+[ext_resource type="Texture2D" uid="uid://dhkxt2r8ociy1" path="res://assets/images/ui/next level.png" id="4_2jtsn"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_v3hpu"]
+[ext_resource type="Texture2D" uid="uid://fmy8iv26dge0" path="res://assets/images/ui/next level-pressed.png" id="5_8bugq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_irg28"]
+font = ExtResource("4_v3hpu")
+font_size = 71
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.09803922)
+shadow_offset = Vector2(1, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jtsn"]
+font = ExtResource("4_v3hpu")
+font_size = 71
+font_color = Color(0.99215686, 0.81960785, 0.29803923, 1)
+shadow_size = 8
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_irg28")
+
+[node name="AudioManager" parent="." instance=ExtResource("2_irg28")]
+position = Vector2(256, 864)
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.16470589, 0.34901962, 0.6666667)
+
+[node name="Succeed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 242.0
+offset_right = 1920.0
+offset_bottom = 744.0
+texture = ExtResource("2_v3hpu")
+
+[node name="Fail" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 242.0
+offset_right = 1920.0
+offset_bottom = 744.0
+texture = ExtResource("3_irg28")
+
+[node name="TotalFish" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1333.0
+offset_top = 439.0
+offset_right = 1440.0
+offset_bottom = 510.0
+text = "30"
+label_settings = SubResource("LabelSettings_irg28")
+
+[node name="TotalCoin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1592.0
+offset_top = 439.0
+offset_right = 1682.0
+offset_bottom = 511.0
+text = "aa"
+label_settings = SubResource("LabelSettings_2jtsn")
+
+[node name="NextButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = 110.0
+offset_right = 94.5
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_2jtsn")
+texture_pressed = ExtResource("5_8bugq")
