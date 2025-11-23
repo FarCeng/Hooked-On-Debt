@@ -1,67 +1,113 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt7ns6bb3sjgm"]
+[gd_scene load_steps=9 format=3 uid="uid://bt7ns6bb3sjgm"]
 
-[ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
-[ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
-[ext_resource type="Texture2D" uid="uid://cqdydlntl65kl" path="res://assets/images/ui/pause.png" id="3_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://3t86cuj3e8an" path="res://assets/images/ui/pause-pressed.png" id="3_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://jilwkht3w41v" path="res://assets/images/ui/turn, coin, hooks.png" id="4_tipki"]
-[ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
-[ext_resource type="Texture2D" uid="uid://b014lfjnuuure" path="res://assets/images/Coin.png" id="6_tipki"]
-[ext_resource type="FontFile" uid="uid://b1mq3mkctiy17" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://b7jhgf2pjwtu8" path="res://scripts/catch_result.gd" id="1_tbgi4"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/catch result-succeed.png" id="2_tefeu"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/refrence catch result-succeed.png" id="3_o6xl0"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/fail.png" id="5_tipki"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
-line_spacing = 0.0
+[sub_resource type="LabelSettings" id="LabelSettings_y8clg"]
 font = ExtResource("7_o6xl0")
-font_size = 94
+font_size = 40
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.09803922)
-shadow_offset = Vector2(0, 4)
+shadow_offset = Vector2(1, 2)
 
-[node name="MainGame" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_5w5qe"]
+font = ExtResource("7_o6xl0")
+font_size = 21
+shadow_size = 4
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mewt"]
+font = ExtResource("7_o6xl0")
+font_size = 40
+font_color = Color(0.003921569, 0.1254902, 0.2784314, 1)
+
+[node name="CatchResult" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tefeu")
+script = ExtResource("1_tbgi4")
 
-[node name="Fishing" parent="." instance=ExtResource("1_tbgi4")]
+[node name="Succeed" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tefeu")
 
-[node name="PauseButton" type="TextureButton" parent="."]
+[node name="RefrenceCatchResultSucceed" type="Sprite2D" parent="Succeed"]
+visible = false
+position = Vector2(235.5, 298.5)
+texture = ExtResource("3_o6xl0")
+
+[node name="CoinLabel" type="Label" parent="Succeed"]
 layout_mode = 0
-offset_left = 1780.0
-offset_top = 49.0
-offset_right = 1855.0
-offset_bottom = 124.0
-texture_normal = ExtResource("3_o6xl0")
-texture_pressed = ExtResource("3_tbgi4")
+offset_left = 248.5
+offset_top = 459.5
+offset_right = 354.5
+offset_bottom = 503.5
+text = "69"
+label_settings = SubResource("LabelSettings_y8clg")
 
-[node name="Turn,Coin,Hooks" type="Sprite2D" parent="."]
-position = Vector2(369, 280)
-texture = ExtResource("4_tipki")
+[node name="LoreLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 518.5
+offset_right = 442.5
+offset_bottom = 541.5
+text = "THE LORE"
+label_settings = SubResource("LabelSettings_5w5qe")
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Coin" type="Sprite2D" parent="Turn,Coin,Hooks"]
-position = Vector2(5, -32)
-texture = ExtResource("6_tipki")
+[node name="NameLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 381.5
+offset_right = 442.5
+offset_bottom = 422.5
+text = "(FISH NAME)"
+label_settings = SubResource("LabelSettings_7mewt")
+horizontal_alignment = 1
 
-[node name="Turn" type="Label" parent="Turn,Coin,Hooks"]
-offset_left = -85.0
-offset_top = -195.0
-offset_right = -39.0
-offset_bottom = -94.0
-text = "1"
-label_settings = SubResource("LabelSettings_tipki")
+[node name="FishTexture" type="TextureRect" parent="Succeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34600002
+anchor_top = 0.215
+anchor_right = 0.34600002
+anchor_bottom = 0.215
+offset_left = -38.774002
+offset_top = -82.425
+offset_right = 184.226
+offset_bottom = -26.425003
+scale = Vector2(0.4, 0.4)
 
-[node name="RefrenceTurn,Coin,Hooks" type="Sprite2D" parent="."]
+[node name="Fail" type="TextureRect" parent="."]
 visible = false
-position = Vector2(369, 280)
-texture = ExtResource("5_85g3d")
-
-[node name="LowOpacity" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("9_85g3d")
-
-[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tipki")

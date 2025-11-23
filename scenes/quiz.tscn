@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkpj5sgb68nia"]
+[gd_scene load_steps=9 format=3 uid="uid://bkpj5sgb68nia"]
 
-[ext_resource type="Texture2D" uid="uid://1h3wvd5f1bw6" path="res://assets/images/quiz/answer.png" id="1_jng0p"]
-[ext_resource type="Script" uid="uid://bfi1xqjtwr1lb" path="res://scenes/quiz.gd" id="1_w5ac1"]
-[ext_resource type="Texture2D" uid="uid://b00amhvcpv0gq" path="res://assets/images/quiz/answer-pressed.png" id="2_2fkxq"]
-[ext_resource type="Texture2D" uid="uid://5i0sc38r74md" path="res://assets/images/quiz/refrence quiz.png" id="2_xq7j8"]
+[ext_resource type="Script" uid="uid://b7jhgf2pjwtu8" path="res://scripts/catch_result.gd" id="1_w5ac1"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/catch result-succeed.png" id="2_m81w7"]
 [ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="3_3bubg"]
-[ext_resource type="Texture2D" uid="uid://c05y7a3bramha" path="res://assets/images/quiz/Quiz.png" id="3_bn6h1"]
-[ext_resource type="Texture2D" uid="uid://dx2mntnj6n7a" path="res://assets/images/quiz/question box.png" id="4_w5ac1"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/refrence catch result-succeed.png" id="3_xq7j8"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/fail.png" id="5_bn6h1"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bn6h1"]
+[sub_resource type="LabelSettings" id="LabelSettings_y8clg"]
 font = ExtResource("3_3bubg")
 font_size = 40
-
-[sub_resource type="LabelSettings" id="LabelSettings_xq7j8"]
-font = ExtResource("3_3bubg")
-font_size = 40
-
-[sub_resource type="LabelSettings" id="LabelSettings_m81w7"]
-font = ExtResource("3_3bubg")
-font_size = 30
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(1, 2)
 
-[node name="Quiz" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_5w5qe"]
+font = ExtResource("3_3bubg")
+font_size = 21
+shadow_size = 4
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mewt"]
+font = ExtResource("3_3bubg")
+font_size = 40
+font_color = Color(0.003921569, 0.1254902, 0.2784314, 1)
+
+[node name="CatchResult" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,107 +32,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w5ac1")
-metadata/_edit_use_anchors_ = true
 
-[node name="RefrenceQuiz" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("2_xq7j8")
-
-[node name="PanelBackground" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 321.0
-offset_top = 397.0
-offset_right = 1595.0
-offset_bottom = 621.0
-texture = ExtResource("4_w5ac1")
-
-[node name="TimerLabel" type="Label" parent="PanelBackground"]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 328.0
-offset_right = 368.0
-offset_bottom = 351.0
-label_settings = SubResource("LabelSettings_bn6h1")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 222.0
-offset_top = 242.0
-offset_right = 1804.0
-offset_bottom = 838.0
-texture = ExtResource("3_bn6h1")
-metadata/_edit_lock_ = true
-
-[node name="LabelQuestion" type="Label" parent="TextureRect"]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 206.0
-offset_right = 1346.0
-offset_bottom = 247.0
-text = "testing"
-label_settings = SubResource("LabelSettings_xq7j8")
-horizontal_alignment = 1
-vertical_alignment = 3
-autowrap_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Succeed" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 291.0
-offset_top = 662.0
-offset_right = 3.0
-offset_bottom = -2.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 60
+texture = ExtResource("2_m81w7")
 
-[node name="Answer1" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_jng0p")
-texture_pressed = ExtResource("2_2fkxq")
+[node name="RefrenceCatchResultSucceed" type="Sprite2D" parent="Succeed"]
+visible = false
+position = Vector2(235.5, 298.5)
+texture = ExtResource("3_xq7j8")
 
-[node name="LabelAnswer1" type="Label" parent="HBoxContainer/Answer1"]
+[node name="CoinLabel" type="Label" parent="Succeed"]
 layout_mode = 0
-offset_left = 27.5
-offset_top = 32.0
-offset_right = 379.5
-offset_bottom = 57.0
-text = "ABCD"
-label_settings = SubResource("LabelSettings_m81w7")
+offset_left = 248.5
+offset_top = 459.5
+offset_right = 354.5
+offset_bottom = 503.5
+text = "69"
+label_settings = SubResource("LabelSettings_y8clg")
+
+[node name="LoreLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 518.5
+offset_right = 442.5
+offset_bottom = 541.5
+text = "THE LORE"
+label_settings = SubResource("LabelSettings_5w5qe")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 381.5
+offset_right = 442.5
+offset_bottom = 422.5
+text = "(FISH NAME)"
+label_settings = SubResource("LabelSettings_7mewt")
 horizontal_alignment = 1
 
-[node name="Answer2" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_jng0p")
-texture_pressed = ExtResource("2_2fkxq")
+[node name="FishTexture" type="TextureRect" parent="Succeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34600002
+anchor_top = 0.215
+anchor_right = 0.34600002
+anchor_bottom = 0.215
+offset_left = -38.774002
+offset_top = -82.425
+offset_right = 184.226
+offset_bottom = -26.425003
+scale = Vector2(0.4, 0.4)
 
-[node name="LabelAnswer1" type="Label" parent="HBoxContainer/Answer2"]
-layout_mode = 0
-offset_left = 27.5
-offset_top = 32.0
-offset_right = 379.5
-offset_bottom = 57.0
-text = "ABCD"
-label_settings = SubResource("LabelSettings_m81w7")
-horizontal_alignment = 1
-
-[node name="Answer3" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_jng0p")
-texture_pressed = ExtResource("2_2fkxq")
-
-[node name="LabelAnswer1" type="Label" parent="HBoxContainer/Answer3"]
-layout_mode = 0
-offset_left = 27.5
-offset_top = 32.0
-offset_right = 379.5
-offset_bottom = 57.0
-text = "ABCD"
-label_settings = SubResource("LabelSettings_m81w7")
-horizontal_alignment = 1
+[node name="Fail" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bn6h1")

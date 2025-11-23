@@ -1,68 +1,113 @@
 [gd_scene load_steps=9 format=3 uid="uid://butgp5an44sx3"]
 
-[ext_resource type="Texture2D" uid="uid://bxhvo6ue7wrf8" path="res://assets/images/reeling/fish button.png" id="1_d1hdf"]
-[ext_resource type="Script" path="res://scripts/reeling.gd" id="1_pt8at"]
-[ext_resource type="Texture2D" uid="uid://bju5wu7bj2ktd" path="res://assets/images/reeling/indikator ikan.png" id="2_hfcvh"]
-[ext_resource type="Texture2D" uid="uid://cgefhxx7o1nus" path="res://assets/images/Low Opacity.png" id="2_jtimv"]
-[ext_resource type="Texture2D" uid="uid://dxoj5mpuws540" path="res://assets/images/reeling/slider.png" id="3_3jl1c"]
-[ext_resource type="Texture2D" uid="uid://bmeuyvyoc2imf" path="res://assets/images/reeling/fish button-pressed.png" id="5_hfcvh"]
+[ext_resource type="Script" uid="uid://b7jhgf2pjwtu8" path="res://scripts/catch_result.gd" id="1_hfcvh"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/catch result-succeed.png" id="2_3jl1c"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/refrence catch result-succeed.png" id="3_jtimv"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/fail.png" id="5_g02ov"]
 [ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="6_3jl1c"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jtimv"]
+[sub_resource type="LabelSettings" id="LabelSettings_y8clg"]
 font = ExtResource("6_3jl1c")
 font_size = 40
 shadow_size = 8
-shadow_offset = Vector2(1, 4)
+shadow_color = Color(0, 0, 0, 0.09803922)
+shadow_offset = Vector2(1, 2)
 
-[node name="Reeling" type="Node2D"]
-script = ExtResource("1_pt8at")
+[sub_resource type="LabelSettings" id="LabelSettings_5w5qe"]
+font = ExtResource("6_3jl1c")
+font_size = 21
+shadow_size = 4
+shadow_offset = Vector2(1, 2)
 
-[node name="EscapeTimer" type="Timer" parent="."]
+[sub_resource type="LabelSettings" id="LabelSettings_7mewt"]
+font = ExtResource("6_3jl1c")
+font_size = 40
+font_color = Color(0.003921569, 0.1254902, 0.2784314, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jtimv")
+[node name="CatchResult" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hfcvh")
 
-[node name="bar" type="Sprite2D" parent="."]
-position = Vector2(0, 0.5)
-texture = ExtResource("2_hfcvh")
+[node name="Succeed" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3jl1c")
 
-[node name="arrow" type="Sprite2D" parent="."]
-position = Vector2(-449, 47.5)
-texture = ExtResource("3_3jl1c")
+[node name="RefrenceCatchResultSucceed" type="Sprite2D" parent="Succeed"]
+visible = false
+position = Vector2(235.5, 298.5)
+texture = ExtResource("3_jtimv")
 
-[node name="start" type="Marker2D" parent="."]
-position = Vector2(-450, 0.5)
+[node name="CoinLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 248.5
+offset_top = 459.5
+offset_right = 354.5
+offset_bottom = 503.5
+text = "69"
+label_settings = SubResource("LabelSettings_y8clg")
 
-[node name="normalstart" type="Marker2D" parent="."]
-position = Vector2(-186, 0.5)
+[node name="LoreLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 518.5
+offset_right = 442.5
+offset_bottom = 541.5
+text = "THE LORE"
+label_settings = SubResource("LabelSettings_5w5qe")
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="end" type="Marker2D" parent="."]
-position = Vector2(450, 0.5)
+[node name="NameLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 381.5
+offset_right = 442.5
+offset_bottom = 422.5
+text = "(FISH NAME)"
+label_settings = SubResource("LabelSettings_7mewt")
+horizontal_alignment = 1
 
-[node name="normalend" type="Marker2D" parent="."]
-position = Vector2(187, 0.5)
+[node name="FishTexture" type="TextureRect" parent="Succeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34600002
+anchor_top = 0.215
+anchor_right = 0.34600002
+anchor_bottom = 0.215
+offset_left = -38.774002
+offset_top = -82.425
+offset_right = 184.226
+offset_bottom = -26.425003
+scale = Vector2(0.4, 0.4)
 
-[node name="rarestart" type="Marker2D" parent="."]
-position = Vector2(-22, 0.5)
-
-[node name="rareend" type="Marker2D" parent="."]
-position = Vector2(23, 0.5)
-
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -96.0
-offset_top = 112.0
-offset_right = 95.0
-offset_bottom = 254.0
-action_mode = 0
-texture_normal = ExtResource("1_d1hdf")
-texture_pressed = ExtResource("5_hfcvh")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -144.0
-offset_top = 260.0
-offset_right = 141.0
-offset_bottom = 301.0
-text = "press to fish!"
-label_settings = SubResource("LabelSettings_jtimv")
-metadata/_edit_use_anchors_ = true
+[node name="Fail" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_g02ov")

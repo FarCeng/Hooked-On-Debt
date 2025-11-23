@@ -1,194 +1,113 @@
-[gd_scene load_steps=27 format=3 uid="uid://lns6rbjij21u"]
+[gd_scene load_steps=9 format=3 uid="uid://lns6rbjij21u"]
 
-[ext_resource type="PackedScene" uid="uid://butgp5an44sx3" path="res://scenes/reeling.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://cugs50pw3qyh6" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://bk4eki3g7hw35" path="res://assets/images/BG.png" id="2_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://bahgyuylw5y4d" path="res://assets/images/BGadaorng.png" id="3_iywne"]
-[ext_resource type="Texture2D" uid="uid://bkufwd2l7fdkr" path="res://assets/Fisher.png" id="4_p57ef"]
+[ext_resource type="Script" uid="uid://b7jhgf2pjwtu8" path="res://scripts/catch_result.gd" id="1_iywne"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/catch result-succeed.png" id="2_p57ef"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/refrence catch result-succeed.png" id="3_u5sy4"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_gee14"]
+[ext_resource type="Texture2D" path="res://assets/images/catchresult/fail.png" id="5_0tnpc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(1548, 0, 774, 773)
+[sub_resource type="LabelSettings" id="LabelSettings_y8clg"]
+font = ExtResource("4_gee14")
+font_size = 40
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.09803922)
+shadow_offset = Vector2(1, 2)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(0, 1546, 774, 773)
+[sub_resource type="LabelSettings" id="LabelSettings_5w5qe"]
+font = ExtResource("4_gee14")
+font_size = 21
+shadow_size = 4
+shadow_offset = Vector2(1, 2)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(0, 773, 774, 773)
+[sub_resource type="LabelSettings" id="LabelSettings_7mewt"]
+font = ExtResource("4_gee14")
+font_size = 40
+font_color = Color(0.003921569, 0.1254902, 0.2784314, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(774, 773, 774, 773)
+[node name="CatchResult" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iywne")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(1548, 773, 774, 773)
+[node name="Succeed" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p57ef")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(0, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(1548, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(0, 2319, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(0, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(774, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(1548, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(2322, 0, 774, 773)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1kice"]
-atlas = ExtResource("4_p57ef")
-region = Rect2(2322, 0, 774, 773)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yqjtg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5sy4")
-}, {
-"duration": 10.0,
-"texture": SubResource("AtlasTexture_gee14")
-}],
-"loop": true,
-"name": &"fail",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 15.0,
-"texture": SubResource("AtlasTexture_vtaks")
-}],
-"loop": true,
-"name": &"reeling1",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kvpfn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dinhu")
-}],
-"loop": true,
-"name": &"reeling2",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kvuet")
-}],
-"loop": true,
-"name": &"still",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trtic")
-}, {
-"duration": 10.0,
-"texture": SubResource("AtlasTexture_ir15t")
-}],
-"loop": true,
-"name": &"succeed",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ca42v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssvqc")
-}, {
-"duration": 18.0,
-"texture": SubResource("AtlasTexture_264po")
-}],
-"loop": true,
-"name": &"throwing",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1kice")
-}],
-"loop": true,
-"name": &"waiting",
-"speed": 5.0
-}]
-
-[sub_resource type="Animation" id="Animation_bt5mj"]
-resource_name = "fail"
-
-[sub_resource type="Animation" id="Animation_5newe"]
-resource_name = "reeling"
-
-[sub_resource type="Animation" id="Animation_ssvqc"]
-resource_name = "still"
-
-[sub_resource type="Animation" id="Animation_37s47"]
-resource_name = "succeed"
-
-[sub_resource type="Animation" id="Animation_264po"]
-resource_name = "throwing"
-
-[sub_resource type="Animation" id="Animation_1kice"]
-resource_name = "waiting"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1j6l"]
-_data = {
-&"fail": SubResource("Animation_bt5mj"),
-&"reeling": SubResource("Animation_5newe"),
-&"still": SubResource("Animation_ssvqc"),
-&"succeed": SubResource("Animation_37s47"),
-&"throwing": SubResource("Animation_264po"),
-&"waiting": SubResource("Animation_1kice")
-}
-
-[node name="Fishing" type="Node2D"]
-script = ExtResource("1_yqjtg")
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("2_lbhrr")
-
-[node name="BGadaorng" type="Sprite2D" parent="."]
+[node name="RefrenceCatchResultSucceed" type="Sprite2D" parent="Succeed"]
 visible = false
-position = Vector2(960, 540)
-texture = ExtResource("3_iywne")
+position = Vector2(235.5, 298.5)
+texture = ExtResource("3_u5sy4")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CoinLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 248.5
+offset_top = 459.5
+offset_right = 354.5
+offset_bottom = 503.5
+text = "69"
+label_settings = SubResource("LabelSettings_y8clg")
 
-[node name="FisherDude" type="AnimatedSprite2D" parent="."]
-position = Vector2(549, 539)
-sprite_frames = SubResource("SpriteFrames_yqjtg")
-animation = &"fail"
-frame_progress = 0.9885282
+[node name="LoreLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 518.5
+offset_right = 442.5
+offset_bottom = 541.5
+text = "THE LORE"
+label_settings = SubResource("LabelSettings_5w5qe")
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Reeling" parent="." instance=ExtResource("1_uwrxv")]
+[node name="NameLabel" type="Label" parent="Succeed"]
+layout_mode = 0
+offset_left = 26.5
+offset_top = 381.5
+offset_right = 442.5
+offset_bottom = 422.5
+text = "(FISH NAME)"
+label_settings = SubResource("LabelSettings_7mewt")
+horizontal_alignment = 1
+
+[node name="FishTexture" type="TextureRect" parent="Succeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34600002
+anchor_top = 0.215
+anchor_right = 0.34600002
+anchor_bottom = 0.215
+offset_left = -38.774002
+offset_top = -82.425
+offset_right = 184.226
+offset_bottom = -26.425003
+scale = Vector2(0.4, 0.4)
+
+[node name="Fail" type="TextureRect" parent="."]
 visible = false
-position = Vector2(960, 540)
-metadata/_edit_lock_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_e1j6l")
-}
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -297.5
+offset_right = 234.5
+offset_bottom = 297.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0tnpc")
