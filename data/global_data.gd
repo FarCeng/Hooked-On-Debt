@@ -2,11 +2,11 @@ extends Node
 
 # ----- GAME PROGRESSION -----
 var turn := 1
-var max_turns := 1
-var attempts := 1
-var attempts_per_turn := 1
+var max_turns := 6
+var attempts := 5
+var attempts_per_turn := 5
 var coins := 0
-var target_coins := 4
+var target_coins := 400
 #signal game_over(is_good_ending: bool)
 
 # ----- DATA STORAGE -----
