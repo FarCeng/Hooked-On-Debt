@@ -1,0 +1,163 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbicwwfc42krv"]
+
+[ext_resource type="Script" uid="uid://d0o6rt8sssqp5" path="res://scripts/settings.gd" id="1_46duy"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/Font/JelloStone-YqKz8.ttf" id="1_rbmmp"]
+[ext_resource type="Script" uid="uid://vrotymarvyqm" path="res://scripts/audio.gd" id="2_i47rn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i47rn"]
+bg_color = Color(0.59607846, 0.80784315, 0.26666668, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_46duy"]
+color = Color(1, 1, 1, 1)
+thickness = 7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1dggd"]
+thickness = 7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rbmmp"]
+thickness = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dggd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46duy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8e7v8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_46duy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 684.0
+offset_top = 232.0
+offset_right = -749.0
+offset_bottom = -286.87714
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i47rn")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_rbmmp")
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -141.56143
+offset_right = 177.5
+offset_bottom = -125.56143
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_46duy")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_1dggd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rbmmp")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_i47rn")
+audio_bus_name = "Music"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -123.56143
+offset_right = 74.5
+offset_bottom = -92.56143
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Music Volume"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.70100003
+anchor_right = 0.5
+anchor_bottom = 0.70100003
+offset_left = -73.25
+offset_top = 5.6528625
+offset_right = 73.25
+offset_bottom = 79.0914
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dggd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46duy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8e7v8")
+text = "		Back"
+
+[connection signal="value_changed" from="Panel/HSlider" to="Panel/HSlider" method="_on_value_changed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
