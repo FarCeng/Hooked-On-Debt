@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1rs1fe70623g"]
+[gd_scene load_steps=12 format=3 uid="uid://cdjj7juh8e7n4"]
 
 [ext_resource type="Script" uid="uid://gxo5mjlgnqo0" path="res://scripts/main_menu.gd" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://duuj0khawij81" path="res://assets/Image/start page buttons/Variant6.png" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://tcjvaf38cmus" path="res://assets/Image/start page buttons/Variant5.png" id="2_8ln24"]
 [ext_resource type="Texture2D" uid="uid://1dur7ln5i6ey" path="res://assets/Image/Main Menu.png" id="2_oa1go"]
 [ext_resource type="Texture2D" uid="uid://buseyb0eaxktw" path="res://assets/Image/start page buttons/Variant4.png" id="3_rtw2f"]
-[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/Font/JelloStone-YqKz8.ttf" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://biovbtknwmybw" path="res://assets/Image/start page buttons/pressed1.png" id="4_m5x4w"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://bji8yqrwfy6lj" path="res://assets/Image/start page buttons/pressed2.png" id="6_xkoo8"]
 [ext_resource type="AudioStream" uid="uid://c6nk8155nkl4u" path="res://assets/Music/mementomancing.mp3" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dy6mow0ep5kxs" path="res://assets/Image/start page buttons/pressed3.png" id="8_k7amj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
 texture = ExtResource("2_oa1go")
@@ -36,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -685.0
-offset_top = -99.0
-offset_right = -173.0
-offset_bottom = 403.0
+offset_left = 81.0
+offset_top = -146.0
+offset_right = 593.0
+offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -47,23 +50,27 @@ theme_override_constants/separation = 50
 [node name="Start" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_wu84c")
+texture_pressed = ExtResource("4_m5x4w")
 
 [node name="Settings" type="TextureButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_8ln24")
+texture_pressed = ExtResource("6_xkoo8")
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_rtw2f")
+texture_pressed = ExtResource("8_k7amj")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -803.0
+offset_left = -67.0
 offset_top = 214.0
-offset_right = -62.0
+offset_right = 734.0
 offset_bottom = 311.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_oa1go")

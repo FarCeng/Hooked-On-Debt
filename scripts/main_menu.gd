@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	GlobalData.reset()
 	get_tree().change_scene_to_file("res://scenes/Scene_Intro.tscn")
 
 

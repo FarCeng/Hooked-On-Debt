@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Hooked On Debt"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="uid://cdjj7juh8e7n4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalData="*res://data/global_data.gd"
 
 [display]
 
