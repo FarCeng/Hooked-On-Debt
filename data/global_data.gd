@@ -2,12 +2,12 @@ extends Node
 
 # ----- GAME PROGRESSION -----
 var turn := 1
-var max_turns := 6
-var attempts := 5
-var attempts_per_turn := 5
+var max_turns := 1
+var attempts := 1
+var attempts_per_turn := 1
 var coins := 0
-var target_coins := 250
-signal game_over(is_good_ending: bool)
+var target_coins := 4
+#signal game_over(is_good_ending: bool)
 
 # ----- DATA STORAGE -----
 var fish_data := []
@@ -105,29 +105,17 @@ func get_random_question() -> Dictionary:
 	return unused_questions.pop_at(randi() % unused_questions.size())
 
 
-func next_attempt() -> void:
+func next_attempt_only():
 	attempts -= 1
+	if attempts < 0:
+		attempts = 0
 
-	if attempts <= 0:
-		# Attempts habis, naikkan turn
-		turn += 1
-
-		# CEK KONDISI GAME OVER
-		if turn > max_turns:
-			# Game sudah tamat!
-			print("[GlobalData] GAME OVER. Final Coins: %d" % coins) # Log penting
-
-			# Tentukan ending
-			var is_good = (coins >= target_coins)
-
-			# PANCARKAN SINYAL GAME OVER!
-			emit_signal("game_over", is_good)
-
-		else:
-			# Game berlanjut ke turn baru
-			attempts = attempts_per_turn
-			print("[GlobalData] Turn baru: %d" % turn) # Log penting
-
+# Fungsi ini untuk memulai turn baru (dipanggil oleh game.gd)
+func advance_to_next_turn():
+	turn += 1
+	if turn <= max_turns:
+		# Reset attempts di sini
+		attempts = attempts_per_turn
 
 func add_coins(amount: int) -> void:
 	coins += amount

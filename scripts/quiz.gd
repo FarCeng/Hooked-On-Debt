@@ -14,6 +14,7 @@ signal quiz_done(result: bool)
 @onready var lbl1 : Label = $HBoxContainer/Answer1/LabelAnswer1
 @onready var lbl2 : Label = $HBoxContainer/Answer2/LabelAnswer1
 @onready var lbl3 : Label = $HBoxContainer/Answer3/LabelAnswer1
+@onready var audio_manager: Node2D = $AudioManager
 
 # === DATA KUIS ===
 var current_question : Dictionary = {}
@@ -23,7 +24,7 @@ var time_left : int = 20
 
 func _ready() -> void:
 	visible = false
-
+	
 	# Hubungkan sinyal tombol dan timer
 	btn1.pressed.connect(_on_btn1)
 	btn2.pressed.connect(_on_btn2)
@@ -36,6 +37,8 @@ func _ready() -> void:
 # ===================================================
 
 func start_question(q: Dictionary, seconds: int = 20) -> void:
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("timer_30sec").play()
 	current_question = q
 
 	lbl_question.text = str(q.get("question", "NO QUESTION"))
@@ -85,6 +88,8 @@ func _on_timer_tick() -> void:
 
 	if time_left <= 0:
 		timer.stop()
+		if is_instance_valid(audio_manager):
+			audio_manager.get_node("timer_30sec").stop()
 		visible = false
 		print("[Quiz] timeout => WRONG")
 		emit_signal("quiz_done", false) # Kirim hasil Gagal
@@ -106,6 +111,8 @@ func _on_btn3() -> void:
 
 func _handle_answer(idx: int) -> void:
 	timer.stop()
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("timer_30sec").stop()
 	visible = false
 
 	var ok = (idx == correct_index)

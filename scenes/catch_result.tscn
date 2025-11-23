@@ -56,19 +56,19 @@ texture = ExtResource("3_0t6l6")
 [node name="CoinLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 248.5
-offset_top = 459.5
+offset_top = 450.5
 offset_right = 354.5
-offset_bottom = 503.5
+offset_bottom = 494.5
 text = "69"
 label_settings = SubResource("LabelSettings_y8clg")
 
 [node name="LoreLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 26.5
-offset_top = 518.5
+offset_top = 510.5
 offset_right = 442.5
-offset_bottom = 541.5
-text = "THE LORE"
+offset_bottom = 582.5
+text = "In order to save ourselves, our nation, we went to the Observer Tower."
 label_settings = SubResource("LabelSettings_5w5qe")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -79,7 +79,6 @@ offset_left = 26.5
 offset_top = 381.5
 offset_right = 442.5
 offset_bottom = 422.5
-text = "(FISH NAME)"
 label_settings = SubResource("LabelSettings_7mewt")
 horizontal_alignment = 1
 

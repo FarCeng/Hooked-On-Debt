@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalData="*res://data/global_data.gd"
-MainBgm="*res://scenes/main_bgm.tscn"
 
 [display]
 

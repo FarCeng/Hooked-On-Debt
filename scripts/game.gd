@@ -6,10 +6,13 @@ extends Node2D
 signal coins_changed(new_total: int)
 signal fish_count_changed(new_count: int)
 signal turn_changed(new_turn: int)
+signal turn_transition_needed(current_turn, max_turns)
+signal game_over_stats(is_win, final_coins, fish_counts_dict: Dictionary)
 
 # --- REFERENSI NODE (Diatur via CanvasLayers) ---
 @onready var bite_timer: Timer = $Timer
 @onready var fisher: AnimatedSprite2D = $FisherDude
+@onready var audio_manager: Node2D = $AudioManager
 
 # Node UI ditempatkan di dalam CanvasLayer "PopupLayer"
 @onready var reeling: Node = $PopupLayer/Reeling
@@ -42,7 +45,7 @@ func _ready() -> void:
 	# Inisialisasi, hubungkan sinyal internal, dan emit state awal.
 	if GlobalData == null:
 		push_error("[INIT] WARNING: GlobalData Autoload TIDAK DITEMUKAN (null).")
-
+	
 	# Setup node internal
 	reeling.visible = false
 	bite_timer.one_shot = true
@@ -55,7 +58,8 @@ func _ready() -> void:
 	call_deferred("_connect_catch_result_signal")
 
 	_play_anim_safe("still") # Animasi idle awal
-
+	if is_instance_valid(low_opacity_bg):
+		low_opacity_bg.modulate.a = 0.0
 	# Kirim data awal (dari GlobalData) ke UI (main.gd)
 	if GlobalData != null:
 		emit_signal("coins_changed", GlobalData.coins)
@@ -91,15 +95,22 @@ func _on_catch_result_finished(result: bool) -> void:
 
 	# Sembunyikan background gelap
 	if is_instance_valid(low_opacity_bg):
-		low_opacity_bg.hide()
+		var tween = get_tree().create_tween()
+		# Animasikan "modulate:a" (alpha) dari 1.0 ke 0.0 (transparan)
+		tween.tween_property(low_opacity_bg, "modulate:a", 0.0, 0.5)
 
 	# Mainkan animasi hasil (succeed/fail) dan TUNGGU (await)
 	if result:
+		if is_instance_valid(audio_manager):
+			audio_manager.get_node("fisherdude_happy").play()
 		await _play_anim_and_wait("succeed")
 	else:
 		await _play_anim_and_wait("fail")
-		
-	# SETELAH animasi selesai, baru kembali ke state idle
+	
+	if is_instance_valid(low_opacity_bg):
+		low_opacity_bg.hide() #hide bg
+
+	print("[GAME] Final animation done, returning to idle.")
 	state = "idle"
 	_play_anim_safe("still")
 
@@ -150,6 +161,8 @@ func _on_quiz_done(result: bool) -> void:
 			emit_signal("fish_count_changed", fish_count)
 			
 			# Tampilkan popup "Success"
+			if is_instance_valid(audio_manager):
+				audio_manager.get_node("succeed").play()
 			if is_instance_valid(catch_result):
 				catch_result.show_result(true, fish) # Kirim data ikan
 		else:
@@ -159,6 +172,8 @@ func _on_quiz_done(result: bool) -> void:
 	
 	else:
 		# --- KUIS SALAH ---
+		if is_instance_valid(audio_manager):
+			audio_manager.get_node("fail").play()
 		if is_instance_valid(catch_result):
 			catch_result.show_result(false) # Tampilkan popup "Fail"
 	
@@ -172,42 +187,59 @@ func _on_quiz_done(result: bool) -> void:
 
 # Fungsi utama yg dipanggil oleh Input. Memulai alur memancing.
 func cast() -> void:
-	# 1. Cek State & Kondisi Game
-	if GlobalData.turn > GlobalData.max_turns:
-		return # Game sudah tamat
-	
+	# 1. Cek State
 	if state != "idle":
-		return # Sedang sibuk (memancing, kuis, dll)
+		return
 
-	# 2. Cek Attempts (Usaha)
-	if GlobalData == null:
-		push_error("[CAST] GlobalData not found! Tidak bisa cek attempts.")
-	elif GlobalData.attempts <= 0:
-		# TODO: Tambahkan suara 'gagal' di sini jika mau
-		return # Attempts habis
+	# 2. [LOGIKA BARU] Cek Game Over
+	if GlobalData.turn > GlobalData.max_turns:
+		_show_game_over_screen()
+		return
 
-	# 3. Kurangi Attempt & Update UI
-	if GlobalData != null:
-		GlobalData.next_attempt()
-		# Emit sinyal agar UI 'turn' terupdate (jika attempts habis, turn bertambah)
-		emit_signal("turn_changed", GlobalData.turn)
-	
-	# 4. Mulai Alur Memancing
+	# 3. [LOGIKA BARU] Cek Transisi Turn
+	if GlobalData.attempts <= 0:
+		state = "transition" # Set state sibuk
+
+		GlobalData.advance_to_next_turn() # Panggil fungsi baru GlobalData
+		emit_signal("turn_changed", GlobalData.turn) # Update UI
+
+		# Cek lagi, mungkin ini turn terakhir
+		if GlobalData.turn > GlobalData.max_turns:
+			_show_game_over_screen()
+		else:
+			# Beri tahu main.gd untuk menampilkan UI transisi
+			emit_signal("turn_transition_needed", GlobalData.turn, GlobalData.max_turns)
+
+		return # Berhenti di sini, jangan lanjut cast
+
+	# --- Jika semua cek di atas lolos, baru kita lanjutkan cast ---
+
+	# 4. Kurangi Attempt & Update UI
+	#if is_instance_valid(audio_manager):
+		#audio_manager.get_node("UI_button_clik").play() # (Ganti nama node jika perlu)
+
+	GlobalData.next_attempt_only() # Panggil fungsi attempt yang baru
+	emit_signal("turn_changed", GlobalData.turn) # (Ini akan update UI attempts)
+
+	# 5. Mulai Alur Memancing (Kode lama Anda)
 	state = "throwing"
 	_play_anim_safe("throwing")
 
-	await get_tree().create_timer(0.06).timeout # Buffer singkat
+	# (Sisa kode await dan audio splash Anda)
+	await get_tree().create_timer(0.9).timeout
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("water_splash").play()
+
+	await get_tree().create_timer(0.06).timeout
 	var dur = _get_anim_len_safe("throwing")
 	if dur > 0.0:
 		await get_tree().create_timer(dur).timeout
 
-	# 5. Masuk State Menunggu
 	state = "waiting"
 	_play_anim_safe("waiting")
-	
+
 	var wait_time = randf_range(min_wait, max_wait)
 	bite_timer.start(wait_time)
-
 
 # Dipicu oleh Timer. Memulai mini-game reeling.
 func _on_bite() -> void:
@@ -215,10 +247,18 @@ func _on_bite() -> void:
 		return # Input dibatalkan, dll.
 
 	state = "hooked"
-	
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("water_splash").play()
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("reeling").play()
 	# Tampilkan background gelap
 	if is_instance_valid(low_opacity_bg):
-		low_opacity_bg.show()
+		low_opacity_bg.show() # Tampilkan node-nya (yang masih transparan)
+		var tween = get_tree().create_tween()
+		# Animasikan "modulate:a" (alpha) dari 0.0 ke 1.0 (terlihat)
+		tween.tween_property(low_opacity_bg, "modulate:a", 1.0, 0.3)
+		
+	print("[BITE] FISH HOOKED! → state = hooked")
 		
 	# Mainkan animasi "hooked"
 	_play_anim_safe("reeling1")
@@ -248,7 +288,8 @@ func finish_reeling(is_success: bool) -> void:
 
 	if is_instance_valid(reeling):
 		reeling.visible = false
-	
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("reeling").stop()
 	# PAUSE animasi 'reeling2' di frame saat ini
 	fisher.stop() 
 
@@ -282,6 +323,8 @@ func finish_reeling(is_success: bool) -> void:
 	else:
 		# --- REELING GAGAL ---
 		state = "finish" # Langsung ke state "finish"
+		if is_instance_valid(audio_manager):
+			audio_manager.get_node("fail").play()
 		if is_instance_valid(catch_result):
 			catch_result.call_deferred("show_result", false) # Tampilkan popup "Fail"
 		
@@ -366,3 +409,39 @@ func _play_anim_and_wait(name: String) -> void:
 		await get_tree().create_timer(dur).timeout
 	else:
 		_play_anim_safe(name)
+
+# Di dalam game.gd
+
+func _show_game_over_screen() -> void:
+	# Hanya jalankan sekali
+	if state == "game_over":
+		return
+		
+	state = "game_over"
+	
+	var final_coins = GlobalData.coins
+	var total_fish = fish_inventory.size() # <-- Kita kembali pakai total_fish
+	
+	# --- DEBUG PRINT #1 (Seperti yang Anda minta) ---
+	print("--- DEBUG GAME OVER ---")
+	print("Koin Didapat: ", final_coins)
+	print("Target Koin: ", GlobalData.target_coins)
+	# -----------------------------------------------
+
+	# --- PERBAIKAN BUG "WIN" ADA DI SINI ---
+	# Kita cek >= (lebih besar atau SAMA DENGAN)
+	var is_win = (final_coins >= GlobalData.target_coins)
+	# -----------------------------------------------
+	
+	# --- DEBUG PRINT #2 (Seperti yang Anda minta) ---
+	if is_win:
+		print("HASIL: Menang (Good Ending)")
+	else:
+		print("HASIL: Kalah (Bad Ending)")
+	print("-------------------------")
+
+	# Kirim sinyal (hanya kirim total_fish, BUKAN dictionary)
+	emit_signal("game_over_stats", is_win, final_coins, total_fish)
+
+func resume_from_transition() -> void:
+	state = "idle"

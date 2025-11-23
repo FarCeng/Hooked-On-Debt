@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://lns6rbjij21u"]
+[gd_scene load_steps=30 format=3 uid="uid://lns6rbjij21u"]
 
 [ext_resource type="PackedScene" uid="uid://butgp5an44sx3" path="res://scenes/reeling.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cugs50pw3qyh6" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://bk4eki3g7hw35" path="res://assets/images/BG.png" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://d07nonptrtsj6" path="res://scenes/audio_manager.tscn" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bkufwd2l7fdkr" path="res://assets/images/Fisher.png" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bkpj5sgb68nia" path="res://scenes/quiz.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://o6atvsod0sci" path="res://scenes/catch_result.tscn" id="6_p57ef"]
@@ -136,6 +137,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_gee14"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_bt5mj"]
 resource_name = "fail"
 
@@ -156,6 +160,7 @@ resource_name = "waiting"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e1j6l"]
 _data = {
+&"RESET": SubResource("Animation_gee14"),
 &"fail": SubResource("Animation_bt5mj"),
 &"reeling": SubResource("Animation_5newe"),
 &"still": SubResource("Animation_ssvqc"),
@@ -167,6 +172,9 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
+[node name="AudioManager" parent="." instance=ExtResource("2_u5sy4")]
+position = Vector2(144, 240)
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("2_lbhrr")
@@ -174,8 +182,7 @@ texture = ExtResource("2_lbhrr")
 [node name="FisherDude" type="AnimatedSprite2D" parent="."]
 position = Vector2(549, 539)
 sprite_frames = SubResource("SpriteFrames_yqjtg")
-animation = &"fail"
-frame_progress = 0.9885282
+animation = &"succeed"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

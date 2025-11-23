@@ -14,8 +14,33 @@ signal finished(result: bool)
 @onready var name_label: Label = $Succeed/NameLabel
 
 var fish_texture_map := {
-	"ikan_salmon": preload("res://assets/images/fish/ikan_salmon.png"),
-	"ikan_tuna": preload("res://assets/images/fish/ikan_tuna.png")
+	# --- COMMON ---
+	"Agus BRJS": preload("res://assets/images/fish/common/Agus BPJS.png"),
+	"Asli banjarmasin": preload("res://assets/images/fish/common/Asli banjarmasin.png"),
+	"cecep kolang kaling": preload("res://assets/images/fish/common/cecep kolang kaling.png"),
+	"Habis Usia": preload("res://assets/images/fish/common/Habis Usia.png"),
+	"honda suzuki": preload("res://assets/images/fish/common/honda suzuki.png"),
+	"Listrik PLN": preload("res://assets/images/fish/common/Listrik PLN.png"),
+	"Mimi Prikitw": preload("res://assets/images/fish/common/Mimi Prikitiw.png"),
+	"Nasi Padang": preload("res://assets/images/fish/common/Nasi Padang.png"),
+	"Oui Oui": preload("res://assets/images/fish/common/Oui Oui.png"),
+	"Tatang skena": preload("res://assets/images/fish/common/Tatang skena.png"),
+	
+	# --- UNCOMMON ---
+	"Area 51": preload("res://assets/images/fish/uncommon/Area 51.png"),
+	"Fididdy": preload("res://assets/images/fish/uncommon/Fididdy.png"),
+	"Gojo Siregar": preload("res://assets/images/fish/uncommon/Gojo Siregar.png"),
+	"koin choco 1 fih": preload("res://assets/images/fish/uncommon/koin choco 1 fih.png"),
+	"Miku Fih": preload("res://assets/images/fish/uncommon/Miku Fih.png"),
+	"Stonks": preload("res://assets/images/fish/uncommon/Stonks.png"),
+
+	# --- RARE ---
+	"employment paper": preload("res://assets/images/fish/rare/employment paper.png"),
+	"party": preload("res://assets/images/fish/rare/party.png"),
+	"tupperware yg hilang": preload("res://assets/images/fish/rare/tupperware yg hilang.png"),
+
+	# --- LEGEND ---
+	"Stella": preload("res://assets/images/fish/legend/Stella.png")
 }
 
 # Variabel untuk menyimpan hasil saat ini

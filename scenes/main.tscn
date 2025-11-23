@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt7ns6bb3sjgm"]
+[gd_scene load_steps=13 format=3 uid="uid://bt7ns6bb3sjgm"]
 
 [ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
+[ext_resource type="PackedScene" uid="uid://d07nonptrtsj6" path="res://scenes/audio_manager.tscn" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://cqdydlntl65kl" path="res://assets/images/ui/pause.png" id="3_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://3t86cuj3e8an" path="res://assets/images/ui/pause-pressed.png" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://jilwkht3w41v" path="res://assets/images/ui/turn, coin, hooks.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
-[ext_resource type="Texture2D" uid="uid://b014lfjnuuure" path="res://assets/images/Coin.png" id="6_tipki"]
 [ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://dacpyle0sf7ku" path="res://scenes/main_bgm.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://c0hnx6dei8ax7" path="res://scenes/turn_transition.tscn" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bxs2akapf5yii" path="res://scenes/game_over.tscn" id="9_choun"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
@@ -36,6 +37,9 @@ script = ExtResource("1_tefeu")
 
 [node name="Game" parent="." instance=ExtResource("1_tbgi4")]
 
+[node name="AudioManager2" parent="Game" instance=ExtResource("2_choun")]
+position = Vector2(824, 664)
+
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 1780.0
@@ -48,10 +52,6 @@ texture_pressed = ExtResource("3_tbgi4")
 [node name="TurnCoinHooks" type="Sprite2D" parent="."]
 position = Vector2(369, 280)
 texture = ExtResource("4_tipki")
-
-[node name="Coin" type="Sprite2D" parent="TurnCoinHooks"]
-position = Vector2(5, -32)
-texture = ExtResource("6_tipki")
 
 [node name="Turn" type="Label" parent="TurnCoinHooks"]
 offset_left = -85.0
@@ -82,7 +82,12 @@ visible = false
 position = Vector2(369, 280)
 texture = ExtResource("5_85g3d")
 
-[node name="MainBGM" parent="." instance=ExtResource("9_85g3d")]
+[node name="TurnTransition" parent="." instance=ExtResource("8_85g3d")]
 visible = false
+layout_mode = 1
+
+[node name="GameOver" parent="." instance=ExtResource("9_choun")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

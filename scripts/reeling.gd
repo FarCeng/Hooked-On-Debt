@@ -13,6 +13,7 @@ signal reeling_finished(success: bool)
 @onready var end: Marker2D = $end
 @onready var button: TextureButton = $TextureButton
 @onready var escape_timer: Timer = $EscapeTimer
+@onready var audio_manager: Node2D = $AudioManager
 
 # --- KONFIGURASI ---
 @export var speed_choices := [1000, 1100, 1200, 1300, 1400, 1500]
@@ -105,6 +106,9 @@ func _on_button_pressed() -> void:
 	if not running:
 		return
 		
+	if is_instance_valid(audio_manager):
+		audio_manager.get_node("reel_button_click").play()
+	
 	var zone = _get_zone()
 	var success = false
 	
