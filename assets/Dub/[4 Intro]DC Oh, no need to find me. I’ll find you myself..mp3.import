@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btwyuk377w3t0"
+path="res://.godot/imported/[4 Intro]DC Oh, no need to find me. I’ll find you myself..mp3-a726fcb7a80c2f94b6fe40a00cb9ff79.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[4 Intro]DC Oh, no need to find me. I’ll find you myself..mp3"
+dest_files=["res://.godot/imported/[4 Intro]DC Oh, no need to find me. I’ll find you myself..mp3-a726fcb7a80c2f94b6fe40a00cb9ff79.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

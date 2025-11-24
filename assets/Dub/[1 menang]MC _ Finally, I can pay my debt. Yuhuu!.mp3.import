@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi30gyyb5d4n7"
+path="res://.godot/imported/[1 menang]MC _ Finally, I can pay my debt. Yuhuu!.mp3-0cfc8b81fdb3ea199cc43c4662e665a0.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[1 menang]MC _ Finally, I can pay my debt. Yuhuu!.mp3"
+dest_files=["res://.godot/imported/[1 menang]MC _ Finally, I can pay my debt. Yuhuu!.mp3-0cfc8b81fdb3ea199cc43c4662e665a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

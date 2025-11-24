@@ -1,0 +1,320 @@
+[gd_scene load_steps=24 format=3 uid="uid://c0aaqtuiqfh3a"]
+
+[ext_resource type="Script" uid="uid://cl4kwoepsbs0g" path="res://scripts/scene_menang.gd" id="1_1lq3t"]
+[ext_resource type="Texture2D" uid="uid://cakybly2e0ahx" path="res://assets/Image/cut scene/Cutscene menang 2.png" id="2_323d3"]
+[ext_resource type="Texture2D" uid="uid://dsfij0l7f2l5v" path="res://assets/Image/skip button.png" id="3_3utdv"]
+[ext_resource type="AudioStream" uid="uid://bi30gyyb5d4n7" path="res://assets/Dub/[1 menang]MC _ Finally, I can pay my debt. Yuhuu!.mp3" id="3_5o7tk"]
+[ext_resource type="Texture2D" uid="uid://d4ax8k2hnw4i" path="res://assets/Image/cut scene/Cutscene menang 1.png" id="3_jpiys"]
+[ext_resource type="AudioStream" uid="uid://emeujp4esgix" path="res://assets/Dub/[2 menang]MC _ Wait, should I wait for the debt collector_ .mp3" id="4_0ye6o"]
+[ext_resource type="Texture2D" uid="uid://byw76wd1n24di" path="res://assets/Image/cut scene/Hideung asli.png" id="4_dluky"]
+[ext_resource type="AudioStream" uid="uid://dhv1sj042ivos" path="res://assets/Dub/[3 menang]MC _ Or, will he come to me.mp3" id="5_e54u1"]
+[ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="6_thh3k"]
+[ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="7_vkniv"]
+[ext_resource type="AudioStream" uid="uid://k7nl38yp87pn" path="res://assets/Dub/[1 Menang]DC Hi there,  the payment is due today..mp3" id="8_ttrv7"]
+[ext_resource type="AudioStream" uid="uid://dr54xodg162nu" path="res://assets/Dub/[2 Menang]DC So, you got the money.mp3" id="9_bonoi"]
+[ext_resource type="AudioStream" uid="uid://gs0r67j5lvte" path="res://assets/Dub/[4 menang]MC _ Yeah i got u.mp3" id="11_r58ct"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jpiys"]
+texture = ExtResource("3_jpiys")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylqe2"]
+texture = ExtResource("3_jpiys")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dqgh7"]
+texture = ExtResource("3_jpiys")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsg7h"]
+texture = ExtResource("4_dluky")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d284j"]
+texture = ExtResource("4_dluky")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obl43"]
+texture = ExtResource("4_dluky")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dkq5v"]
+texture = ExtResource("4_dluky")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_na5qc"]
+texture = ExtResource("2_323d3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dluky"]
+bg_color = Color(0, 0.16470589, 0.34901962, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylqe2"]
+bg_color = Color(0, 0.16470589, 0.34901962, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1lq3t")
+
+[node name="Cutscene 1" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jpiys")
+
+[node name="Label" type="Label" parent="Cutscene 1"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Finally, I can pay my debt. Yuhuu!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 1"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 1"]
+stream = ExtResource("3_5o7tk")
+
+[node name="Cutscene 2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ylqe2")
+
+[node name="Label" type="Label" parent="Cutscene 2"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Wait, should I wait for the debt collector? "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 2"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 2"]
+stream = ExtResource("4_0ye6o")
+
+[node name="Cutscene 3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dqgh7")
+
+[node name="Label" type="Label" parent="Cutscene 3"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Or will he come to me?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 3"]
+stream = ExtResource("5_e54u1")
+
+[node name="Cutscene 4" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsg7h")
+
+[node name="Label" type="Label" parent="Cutscene 4"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "(Telephone ringing)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 4"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 4"]
+stream = ExtResource("7_vkniv")
+
+[node name="Cutscene 5" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d284j")
+
+[node name="Label" type="Label" parent="Cutscene 5"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "(Pickup the telephone)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 5"]
+
+[node name="Cutscene 6" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_obl43")
+
+[node name="Label" type="Label" parent="Cutscene 6"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Hi there,  the payment is due today"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 6"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 6"]
+stream = ExtResource("8_ttrv7")
+
+[node name="Cutscene 7" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dkq5v")
+
+[node name="Label" type="Label" parent="Cutscene 7"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "So, you got the money?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 7"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 7"]
+stream = ExtResource("9_bonoi")
+
+[node name="Cutscene 8" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_na5qc")
+
+[node name="Label" type="Label" parent="Cutscene 8"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = " Yeah, I gotchu and the money too"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Cutscene 8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 8"]
+stream = ExtResource("11_r58ct")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dluky")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ylqe2")
+
+[node name="Skip" type="TextureButton" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 1655.0
+offset_top = 17.0
+offset_right = 1875.0
+offset_bottom = 100.0
+texture_normal = ExtResource("3_3utdv")
+texture_pressed = ExtResource("6_thh3k")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coby5x5cxurrw"
+path="res://.godot/imported/Memory Reboot.mp3-9e5672c3c15e657b3a9ad14aadd08489.mp3str"
+
+[deps]
+
+source_file="res://assets/Music/Memory Reboot.mp3"
+dest_files=["res://.godot/imported/Memory Reboot.mp3-9e5672c3c15e657b3a9ad14aadd08489.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

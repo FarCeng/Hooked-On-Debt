@@ -45,24 +45,24 @@ stream = ExtResource("7_ic5jq")
 
 [node name="BGM_Turn1" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("10_2y5yn")
-volume_db = -25.0
+volume_db = -10.0
 
 [node name="BGM_Turn2" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("11_ic5jq")
-volume_db = -25.0
+volume_db = -10.0
 
 [node name="BGM_Turn3" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("12_2y5yn")
-volume_db = -25.0
+volume_db = -10.0
 
 [node name="BGM_Turn4" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("13_oucy0")
-volume_db = -25.0
+volume_db = -10.0
 
 [node name="BGM_Turn5" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("14_cuol6")
-volume_db = -25.0
+volume_db = -10.0
 
 [node name="BGM_Turn6" type="AudioStreamPlayer2D" parent="." groups=["BGM"]]
 stream = ExtResource("15_m1k83")
-volume_db = -25.0
+volume_db = -10.0

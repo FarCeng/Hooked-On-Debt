@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2dlrk1pnhor6"
+path="res://.godot/imported/[5 Kalah]DC It is something that you wish would never happen..mp3-0026c5fe5bd1c5411bb331f5d9be8352.mp3str"
+
+[deps]
+
+source_file="res://assets/Dub/[5 Kalah]DC It is something that you wish would never happen..mp3"
+dest_files=["res://.godot/imported/[5 Kalah]DC It is something that you wish would never happen..mp3-0026c5fe5bd1c5411bb331f5d9be8352.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
