@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dt00lxluidrmu"]
+[gd_scene load_steps=13 format=3 uid="uid://bt7ns6bb3sjgm"]
 
 [ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
@@ -7,14 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://3t86cuj3e8an" path="res://assets/images/ui/pause-pressed.png" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://jilwkht3w41v" path="res://assets/images/ui/turn, coin, hooks.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
-[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://c0hnx6dei8ax7" path="res://scenes/turn_transition.tscn" id="8_85g3d"]
-[ext_resource type="PackedScene" uid="uid://cjpbyi1f2jou8" path="res://scenes/game_over.tscn" id="9_choun"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bo04adeu3vchu" path="res://scenes/turn_transition.tscn" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://cxyn1hed72y5n" path="res://scenes/game_over.tscn" id="9_choun"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
 font = ExtResource("7_o6xl0")
-font_size = 79
+font_size = 94
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(0, 4)
@@ -25,13 +25,6 @@ font_size = 39
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(1, 4)
-
-[sub_resource type="LabelSettings" id="LabelSettings_choun"]
-font = ExtResource("7_o6xl0")
-font_size = 35
-shadow_size = 8
-shadow_color = Color(0, 0, 0, 0.13725491)
-shadow_offset = Vector2(-1, 4)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -61,10 +54,10 @@ position = Vector2(369, 280)
 texture = ExtResource("4_tipki")
 
 [node name="Turn" type="Label" parent="TurnCoinHooks"]
-offset_left = -73.0
-offset_top = -212.0
-offset_right = -22.0
-offset_bottom = -111.0
+offset_left = -85.0
+offset_top = -195.0
+offset_right = -39.0
+offset_bottom = -94.0
 text = "1"
 label_settings = SubResource("LabelSettings_tipki")
 
@@ -83,14 +76,6 @@ offset_right = 101.0
 offset_bottom = -7.0
 text = "0"
 label_settings = SubResource("LabelSettings_85g3d")
-
-[node name="AttemptsLabel" type="Label" parent="TurnCoinHooks"]
-offset_left = -233.0
-offset_top = -139.0
-offset_right = -193.0
-offset_bottom = -104.0
-text = "5"
-label_settings = SubResource("LabelSettings_choun")
 
 [node name="RefrenceTurn,Coin,Hooks" type="Sprite2D" parent="."]
 visible = false
