@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cvp3j0rwcp6ri"
-path="res://.godot/imported/JelloStone-YqKz8.ttf-19973d223de2df338aa160234848a413.fontdata"
+path="res://.godot/imported/JelloStone-YqKz8.ttf-17c68c290d13b315ed981d5e87caf5ce.fontdata"
 
 [deps]
 
-source_file="res://assets/font/JelloStone-YqKz8.ttf"
-dest_files=["res://.godot/imported/JelloStone-YqKz8.ttf-19973d223de2df338aa160234848a413.fontdata"]
+source_file="res://assets/Font/JelloStone-YqKz8.ttf"
+dest_files=["res://.godot/imported/JelloStone-YqKz8.ttf-17c68c290d13b315ed981d5e87caf5ce.fontdata"]
 
 [params]
 

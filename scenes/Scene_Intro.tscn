@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsahvijuksakj"]
+[gd_scene load_steps=30 format=3 uid="uid://g4v8ynq3dnls"]
 
 [ext_resource type="Script" uid="uid://2m2frs2bmmll" path="res://scripts/cutscene.gd" id="1_4a25n"]
 [ext_resource type="Texture2D" uid="uid://3mag0ibsdhnx" path="res://assets/Image/cut scene/Cutscene awal.png" id="2_s1qap"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dsfij0l7f2l5v" path="res://assets/Image/skip button.png" id="9_27hwh"]
 [ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="9_ewo6j"]
 [ext_resource type="AudioStream" uid="uid://ty8h108g74dy" path="res://assets/Dub/[6 Intro]MC _ Huh… can I pay my debt.mp3" id="15_kaw85"]
-[ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="17_27hwh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ujuq"]
 texture = ExtResource("2_s1qap")
@@ -57,7 +56,7 @@ bg_color = Color(0, 0.16470589, 0.34901962, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05k6t"]
 bg_color = Color(0, 0.16470589, 0.34901962, 1)
 
-[node name="Intro" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,7 +388,7 @@ offset_bottom = 110.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_05k6t")
 
-[node name="Skip" type="TextureButton" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
 z_index = 10
 layout_mode = 0
 offset_left = 1655.0
@@ -397,7 +396,6 @@ offset_top = 17.0
 offset_right = 1875.0
 offset_bottom = 100.0
 texture_normal = ExtResource("9_27hwh")
-texture_pressed = ExtResource("17_27hwh")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

@@ -5,28 +5,25 @@
 [ext_resource type="Texture2D" uid="uid://b00amhvcpv0gq" path="res://assets/images/quiz/answer-pressed.png" id="2_2fkxq"]
 [ext_resource type="PackedScene" uid="uid://d07nonptrtsj6" path="res://scenes/audio_manager.tscn" id="2_bn6h1"]
 [ext_resource type="Texture2D" uid="uid://5i0sc38r74md" path="res://assets/images/quiz/refrence quiz.png" id="2_xq7j8"]
-[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="3_3bubg"]
+[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="3_3bubg"]
 [ext_resource type="Texture2D" uid="uid://c05y7a3bramha" path="res://assets/images/quiz/Quiz.png" id="3_bn6h1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xq7j8"]
 font = ExtResource("3_3bubg")
 font_size = 40
-shadow_size = 8
-shadow_color = Color(0, 0, 0, 0.1764706)
-shadow_offset = Vector2(1, 4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bn6h1"]
 font = ExtResource("3_3bubg")
 font_size = 96
 shadow_size = 8
-shadow_color = Color(0, 0, 0, 0.1764706)
+shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(1, 4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m81w7"]
 font = ExtResource("3_3bubg")
 font_size = 30
 shadow_size = 8
-shadow_color = Color(0, 0, 0, 0.1764706)
+shadow_color = Color(0, 0, 0, 0.09803922)
 shadow_offset = Vector2(1, 2)
 
 [node name="Quiz" type="Control"]

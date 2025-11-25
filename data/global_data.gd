@@ -1,27 +1,27 @@
 extends Node
 
-# Variabel yang melacak progres game saat ini
+# ----- GAME PROGRESSION -----
 var turn := 1
 var max_turns := 6
 var attempts := 5
 var attempts_per_turn := 5
 var coins := 0
 var target_coins := 400
+#signal game_over(is_good_ending: bool)
 
-
-# Variabel untuk menyimpan data dari file JSON
+# ----- DATA STORAGE -----
 var fish_data := []
 var quiz_data := []
 var unused_questions := []
 var current_fish := {}
 
-# Saat Autoload ini dimuat, langsung panggil fungsi untuk load data JSON.
+# ----- HELPERS -----
 func _ready() -> void:
+	# Autoload entry point: load JSON data on startup
 	load_all_data()
 
-# Helper internal: Membuka file JSON dari path, mem-parsingnya, dan mengembalikannya sebagai Array.
 func load_json(path: String) -> Array:
-	# Pengecekan keamanan file
+	# safe file check
 	if not FileAccess.file_exists(path):
 		push_warning("[GlobalData] JSON NOT FOUND: " + path)
 		return []
@@ -33,6 +33,7 @@ func load_json(path: String) -> Array:
 	var text = f.get_as_text()
 	f.close()
 
+	# --- UNTUK GODOT 4 ---
 	var json = JSON.new()
 	var error = json.parse(text)
 	
@@ -43,6 +44,7 @@ func load_json(path: String) -> Array:
 
 	# Dapatkan datanya
 	var result = json.get_data()
+	# --- AKHIR PERBAIKAN ---
 
 	# Cek tipe data hasil
 	if typeof(result) == TYPE_ARRAY:
@@ -55,13 +57,13 @@ func load_json(path: String) -> Array:
 		push_error("[GlobalData] Unsupported JSON type in " + path)
 		return []
 
-# Dipanggil oleh game.gd. Mengambil 1 ikan acak dari 'fish_data' berdasarkan persentase rarity.
+
 func get_random_fish() -> Dictionary:
-	# Pengaman: jika data ikan gagal dimuat, kembalikan data kosong.
+	# defensive: if no fish data loaded return empty dict
 	if fish_data.size() == 0:
 		return {}
 
-	# Tentukan rarity berdasarkan persentase (roll).
+	# pick rarity by thresholds
 	var roll = randi() % 100
 	var selected_rarity := ""
 	if roll < 60:
@@ -73,13 +75,13 @@ func get_random_fish() -> Dictionary:
 	else:
 		selected_rarity = "legend"
 
-	# Kumpulkan semua ikan yang rarity-nya cocok.
+	# collect candidates
 	var selected_list := []
 	for f in fish_data:
 		if typeof(f) == TYPE_DICTIONARY and f.has("rarity") and str(f["rarity"]) == selected_rarity:
 			selected_list.append(f)
 
-	# Fallback: jika tidak ada yg cocok (misal, typo), pakai semua data ikan.
+	# fallback: take whole pool if none matched
 	if selected_list.size() == 0:
 		selected_list = fish_data.duplicate(true)
 
@@ -88,47 +90,39 @@ func get_random_fish() -> Dictionary:
 
 	return selected_list[randi() % selected_list.size()]
 
-# Memuat semua file .json ke variabel di script ini.
+
 func load_all_data() -> void:
 	fish_data = load_json("res://data/fish_data.json")
 	quiz_data = load_json("res://data/quiz_data.json")
-	
-	# Siapkan daftar kuis, lalu acak urutannya.
+	# prepare unused questions
 	unused_questions = quiz_data.duplicate(true)
 	unused_questions.shuffle()
 
-# Dipanggil oleh game.gd. Mengambil 1 pertanyaan dari 'unused_questions' dan menghapusnya dari daftar.
+
 func get_random_question() -> Dictionary:
 	if unused_questions.size() == 0:
 		return {}
 	return unused_questions.pop_at(randi() % unused_questions.size())
 
-# Dipanggil oleh game.gd setiap kali pemain memancing. Hanya mengurangi 'attempt'.
+
 func next_attempt_only():
 	attempts -= 1
 	if attempts < 0:
 		attempts = 0
 
-# Fungsi ini untuk memulai turn baru (dipanggil oleh game.gd saat attempt habis).
+# Fungsi ini untuk memulai turn baru (dipanggil oleh game.gd)
 func advance_to_next_turn():
 	turn += 1
-	attempts = attempts_per_turn
+	if turn <= max_turns:
+		# Reset attempts di sini
+		attempts = attempts_per_turn
 
-# Dipanggil oleh game.gd saat kuis benar. Menambah koin pemain.
 func add_coins(amount: int) -> void:
 	coins += amount
 
-# Mereset semua state game DAN memuat ulang data dari JSON (termasuk daftar kuis).
+
 func reset_all() -> void:
 	turn = 1
 	attempts = attempts_per_turn
 	coins = 0
 	load_all_data()
-
-# Dipanggil dari main_menu.gd. Mereset state game untuk permainan baru.
-func reset() -> void:
-	print("--- DEBUG: GlobalData di-reset ---")
-	turn = 1
-	coins = 0
-	attempts = attempts_per_turn
-	target_coins = 400
