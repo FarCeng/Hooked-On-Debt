@@ -200,6 +200,8 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Cutscene 5"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 5"]
+
 [node name="Cutscene 6" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15

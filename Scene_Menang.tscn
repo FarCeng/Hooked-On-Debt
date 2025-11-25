@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djqbowe24v13m"]
+[gd_scene load_steps=23 format=3 uid="uid://cvjlccn8w6dyt"]
 
 [ext_resource type="Script" uid="uid://cl4kwoepsbs0g" path="res://scripts/scene_menang.gd" id="1_1lq3t"]
 [ext_resource type="Texture2D" uid="uid://cakybly2e0ahx" path="res://assets/Image/cut scene/Cutscene menang 2.png" id="2_323d3"]
