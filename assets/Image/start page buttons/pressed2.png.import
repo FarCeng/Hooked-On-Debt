@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgefhxx7o1nus"
-path="res://.godot/imported/Low Opacity.png-2731658fce73f12c1a2b104e847b1d8a.ctex"
+uid="uid://bji8yqrwfy6lj"
+path="res://.godot/imported/pressed2.png-98955358c737e8a8f9e1a913684fac13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Low Opacity.png"
-dest_files=["res://.godot/imported/Low Opacity.png-2731658fce73f12c1a2b104e847b1d8a.ctex"]
+source_file="res://assets/Image/start page buttons/pressed2.png"
+dest_files=["res://.godot/imported/pressed2.png-98955358c737e8a8f9e1a913684fac13.ctex"]
 
 [params]
 

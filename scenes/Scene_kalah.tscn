@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://tccn0j8d7g66"]
+[gd_scene load_steps=30 format=3 uid="uid://dgeagx82to18k"]
 
 [ext_resource type="Script" uid="uid://cv2tnt8wpp1ej" path="res://scripts/Scene_kalah.gd" id="1_au0f3"]
 [ext_resource type="Texture2D" uid="uid://d3iunob5gdpxf" path="res://assets/Image/cut scene/Cutscene kalah 1.png" id="2_ovmul"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b5gy4lmw0fsx8" path="res://assets/Dub/[3 Kalah]DC Nope, the deal was you paid for 2000 within 6 days.mp3" id="11_kt6h5"]
 [ext_resource type="AudioStream" uid="uid://qxpoepv671hg" path="res://assets/Dub/[4 Kalah]DC And if not, you know what happens next..mp3" id="13_euq3i"]
 [ext_resource type="AudioStream" uid="uid://2dlrk1pnhor6" path="res://assets/Dub/[5 Kalah]DC It is something that you wish would never happen..mp3" id="14_2nyxf"]
+[ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="16_t5ncu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn4pb"]
 texture = ExtResource("2_ovmul")
@@ -412,7 +413,7 @@ offset_bottom = 110.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gmufs")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Skip" type="TextureButton" parent="."]
 z_index = 10
 layout_mode = 0
 offset_left = 1655.0
@@ -420,3 +421,4 @@ offset_top = 17.0
 offset_right = 1875.0
 offset_bottom = 100.0
 texture_normal = ExtResource("5_ovmul")
+texture_pressed = ExtResource("16_t5ncu")
