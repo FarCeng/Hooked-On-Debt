@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://o6atvsod0sci"]
+[gd_scene load_steps=12 format=3 uid="uid://o6atvsod0sci"]
 
 [ext_resource type="Script" uid="uid://de73fg4jyf1nr" path="res://scripts/catch_result.gd" id="1_cvvu1"]
 [ext_resource type="Texture2D" uid="uid://ppt63nrnjiyi" path="res://assets/images/catchresult/catch result-succeed.png" id="2_iervw"]
-[ext_resource type="Texture2D" uid="uid://dghvsha2h3gs7" path="res://assets/images/catchresult/refrence catch result-succeed.png" id="3_0t6l6"]
+[ext_resource type="Texture2D" uid="uid://b6uuacwmq7xga" path="res://assets/images/catchresult/common.png" id="3_5w5qe"]
 [ext_resource type="Texture2D" uid="uid://j4t4s2sd62on" path="res://assets/images/catchresult/fail.png" id="3_iervw"]
-[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_d0jb7"]
+[ext_resource type="Texture2D" uid="uid://cdhcwdpxu0u33" path="res://assets/images/catchresult/uncommon.png" id="4_7mewt"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_d0jb7"]
+[ext_resource type="Texture2D" uid="uid://b6odego15ytay" path="res://assets/images/catchresult/rare.png" id="5_kqex3"]
+[ext_resource type="Texture2D" uid="uid://ddexux2425rdp" path="res://assets/images/catchresult/legend.png" id="6_jujgm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y8clg"]
 font = ExtResource("4_d0jb7")
@@ -48,26 +51,48 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_iervw")
 
-[node name="RefrenceCatchResultSucceed" type="Sprite2D" parent="Succeed"]
+[node name="Common" type="TextureRect" parent="Succeed"]
 visible = false
-position = Vector2(235.5, 298.5)
-texture = ExtResource("3_0t6l6")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_5w5qe")
+
+[node name="Uncommon" type="TextureRect" parent="Succeed"]
+visible = false
+layout_mode = 0
+offset_right = 469.0
+offset_bottom = 595.0
+texture = ExtResource("4_7mewt")
+
+[node name="Rare" type="TextureRect" parent="Succeed"]
+layout_mode = 0
+offset_right = 469.0
+offset_bottom = 595.0
+texture = ExtResource("5_kqex3")
+
+[node name="Legend" type="TextureRect" parent="Succeed"]
+visible = false
+layout_mode = 0
+offset_right = 469.0
+offset_bottom = 595.0
+texture = ExtResource("6_jujgm")
 
 [node name="CoinLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 248.5
-offset_top = 450.5
+offset_top = 442.5
 offset_right = 354.5
-offset_bottom = 494.5
+offset_bottom = 486.5
 text = "69"
 label_settings = SubResource("LabelSettings_y8clg")
 
 [node name="LoreLabel" type="Label" parent="Succeed"]
 layout_mode = 0
 offset_left = 26.5
-offset_top = 510.5
+offset_top = 501.5
 offset_right = 442.5
-offset_bottom = 582.5
+offset_bottom = 573.5
 text = "In order to save ourselves, our nation, we went to the Observer Tower."
 label_settings = SubResource("LabelSettings_5w5qe")
 horizontal_alignment = 1
@@ -75,10 +100,11 @@ autowrap_mode = 2
 
 [node name="NameLabel" type="Label" parent="Succeed"]
 layout_mode = 0
-offset_left = 26.5
+offset_left = 10.5
 offset_top = 381.5
-offset_right = 442.5
+offset_right = 458.5
 offset_bottom = 422.5
+text = "Tupperware Yg ilang"
 label_settings = SubResource("LabelSettings_7mewt")
 horizontal_alignment = 1
 
