@@ -9,12 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://j80rik5yxw7f" path="res://assets/Dub/[3 Intro]MC _ Hmm, I guess so..mp3" id="5_3rm4g"]
 [ext_resource type="AudioStream" uid="uid://myqptpmj7h0i" path="res://assets/Dub/[1 Intro]DC Oh you dare to answer my call huh.mp3" id="5_ooxl8"]
 [ext_resource type="AudioStream" uid="uid://ctdk6jujr2jjd" path="res://assets/Dub/[4 Intro]MC _ But.. that’s terrifying...mp3" id="6_lm4t5"]
-[ext_resource type="AudioStream" uid="uid://ds2eo6roy1bk5" path="res://assets/Dub/[2 Intro]DC 2000 Credit and 6 days to pay.mp3" id="6_se07d"]
 [ext_resource type="AudioStream" uid="uid://dqeljgl3m6aff" path="res://assets/Dub/[3 Intro]DC That’s your debt..mp3" id="7_3rm4g"]
 [ext_resource type="AudioStream" uid="uid://l5iws1rh1mqx" path="res://assets/Dub/[5 Intro]MC _ Well, there’s no other choice..mp3" id="7_lm4t5"]
 [ext_resource type="AudioStream" uid="uid://btwyuk377w3t0" path="res://assets/Dub/[4 Intro]DC Oh, no need to find me. I’ll find you myself..mp3" id="8_lm4t5"]
 [ext_resource type="Texture2D" uid="uid://dsfij0l7f2l5v" path="res://assets/Image/skip button.png" id="9_27hwh"]
 [ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="9_ewo6j"]
+[ext_resource type="AudioStream" uid="uid://d11ljaxjsq5o7" path="res://assets/Dub/[DC Intro] 300c and 6 days to pay(1).mp3" id="12_27hwh"]
 [ext_resource type="AudioStream" uid="uid://ty8h108g74dy" path="res://assets/Dub/[6 Intro]MC _ Huh… can I pay my debt.mp3" id="15_kaw85"]
 [ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="17_27hwh"]
 
@@ -286,14 +286,14 @@ offset_top = 992.0
 offset_right = 1923.0
 offset_bottom = 1051.0
 theme_override_font_sizes/font_size = 40
-text = "Two thousand credits (¢ 2000) and 6 days to pay."
+text = "Three Hundred credits (¢ 300) and 6 days to pay."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Cutscene 9"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 9"]
-stream = ExtResource("6_se07d")
+stream = ExtResource("12_27hwh")
 
 [node name="Cutscene 10" type="Panel" parent="."]
 layout_mode = 1
