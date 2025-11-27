@@ -80,6 +80,10 @@ text = "HOOKED ON DEBT!"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_oa1go")
 autoplay = true
+bus = &"Music"
+
+[node name="Settings" parent="." instance=ExtResource("8_tbmy8")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
