@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dt00lxluidrmu"]
+[gd_scene load_steps=14 format=3 uid="uid://bt7ns6bb3sjgm"]
 
 [ext_resource type="PackedScene" uid="uid://lns6rbjij21u" path="res://scenes/game.tscn" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://bm0s6camgcrec" path="res://scripts/main.gd" id="1_tefeu"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bvknung0bnvcp" path="res://assets/images/ui/refrence-turn, coin, hooks.png" id="5_85g3d"]
 [ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c0hnx6dei8ax7" path="res://scenes/turn_transition.tscn" id="8_85g3d"]
-[ext_resource type="PackedScene" uid="uid://cjpbyi1f2jou8" path="res://scenes/game_over.tscn" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://bxs2akapf5yii" path="res://scenes/game_over.tscn" id="9_choun"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 line_spacing = 0.0
@@ -98,7 +98,6 @@ position = Vector2(369, 280)
 texture = ExtResource("5_85g3d")
 
 [node name="TurnTransition" parent="." instance=ExtResource("8_85g3d")]
-visible = false
 layout_mode = 1
 
 [node name="GameOver" parent="." instance=ExtResource("9_choun")]

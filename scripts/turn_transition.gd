@@ -2,33 +2,45 @@ extends Control
 
 signal finished
 
-@onready var background: ColorRect = $Background
+@export var fade_in_duration := 0.5
+@export var min_display_duration := 2.5
+
 @onready var turn_label: Label = $TurnLabel
 @onready var prompt_label: Label = $PromptLabel
 
+var is_clickable := false
+
 func _ready() -> void:
-	# Start hidden (transparent)
 	modulate.a = 0.0
 	visible = false
-	print("TurnPopup: ready")
+	prompt_label.visible = false
 
-# Show turn popup (dipanggil oleh main.gd)
 func show_turn(current_turn: int, max_turns: int) -> void:
+	is_clickable = false
+	modulate.a = 0.0
 	turn_label.text = "TURN %s / %s" % [current_turn, max_turns]
 	visible = true
+	
+	prompt_label.visible = false
 
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.5)
-	print("TurnPopup: show_turn ->", current_turn, "/", max_turns)
+	tween.tween_property(self, "modulate:a", 1.0, fade_in_duration)
+	
+	await get_tree().create_timer(min_display_duration).timeout
+	
+	is_clickable = true
+	prompt_label.visible = true
 
-# Tunggu input klik untuk melanjutkan
 func _input(event: InputEvent) -> void:
-	if not visible:
+	if not visible or not is_clickable:
 		return
 
 	var is_click = event is InputEventMouseButton and event.pressed
-	if is_click:
+	var is_action = event.is_action_pressed("ui_accept")
+
+	if is_click or is_action:
 		get_viewport().set_input_as_handled()
+		
 		visible = false
+		modulate.a = 0.0
 		emit_signal("finished")
-		print("TurnPopup: clicked -> emit finished")
