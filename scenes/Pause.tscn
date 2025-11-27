@@ -1,129 +1,153 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxqu2vqi20nov"]
+[gd_scene load_steps=13 format=3 uid="uid://uhojhsq37luv"]
 
-[ext_resource type="Script" uid="uid://ca50rcvr3ceeo" path="res://scripts/pause.gd" id="1_7akkw"]
-[ext_resource type="Shader" uid="uid://3mtk23ge5arg" path="res://assets/Image/mainmenubg.gdshader" id="1_qp6fb"]
-[ext_resource type="Texture2D" uid="uid://b2oxvv67anckb" path="res://assets/Image/pause mid-game.png" id="1_uc2tp"]
-[ext_resource type="Texture2D" uid="uid://dbak4mte6e3sl" path="res://assets/Image/Frame 5.png" id="2_qp6fb"]
-[ext_resource type="Texture2D" uid="uid://bllamv3ytxro2" path="res://assets/Image/Frame 6.png" id="3_7akkw"]
-[ext_resource type="Texture2D" uid="uid://duqwre3wcw6hc" path="res://assets/Image/Frame 7.png" id="4_w5f6b"]
-[ext_resource type="Texture2D" uid="uid://dywb3kl6jcyls" path="res://assets/Image/Frame 8.png" id="5_87awh"]
-[ext_resource type="PackedScene" uid="uid://dbicwwfc42krv" path="res://scenes/Settings.tscn" id="8_w5f6b"]
+[ext_resource type="Script" uid="uid://ca50rcvr3ceeo" path="res://scripts/pause.gd" id="1_cml1b"]
+[ext_resource type="Texture2D" uid="uid://c113jgaimqcb8" path="res://assets/Image/Rectangle 8.png" id="1_wen6a"]
+[ext_resource type="Shader" uid="uid://bsaho75nsdng2" path="res://assets/Image/pause.gdshader" id="2_1xtef"]
+[ext_resource type="Texture2D" uid="uid://cmnunqnuh6nrj" path="res://assets/Image/Rectangle 18.png" id="2_cml1b"]
+[ext_resource type="Texture2D" uid="uid://d0eqvm02je4vd" path="res://assets/Image/x button.png" id="3_1xtef"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_xmhi0"]
+[ext_resource type="Texture2D" uid="uid://dbak4mte6e3sl" path="res://assets/Image/Frame 5.png" id="5_xw83q"]
+[ext_resource type="Texture2D" uid="uid://duqwre3wcw6hc" path="res://assets/Image/Frame 7.png" id="6_0akjr"]
+[ext_resource type="Texture2D" uid="uid://dywb3kl6jcyls" path="res://assets/Image/Frame 8.png" id="7_capb0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7akkw"]
-shader = ExtResource("1_qp6fb")
-shader_parameter/lod = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmhi0"]
+shader = ExtResource("2_1xtef")
+shader_parameter/blur_size = 6.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x85fr"]
-texture = ExtResource("1_uc2tp")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcmcy"]
+texture = ExtResource("1_wen6a")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="Animation" id="Animation_w5f6b"]
-resource_name = "blur"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.800000038]
-}
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jl8xs"]
+texture = ExtResource("2_cml1b")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[sub_resource type="Animation" id="Animation_87awh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x85fr"]
-_data = {
-&"RESET": SubResource("Animation_87awh"),
-&"blur": SubResource("Animation_w5f6b")
-}
-
-[node name="Control" type="Control"]
+[node name="Pause" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7akkw")
+script = ExtResource("1_cml1b")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_7akkw")
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(969.5, 543.5)
+scale = Vector2(9.695, 5.395)
+copy_mode = 2
+
+[node name="BlurBG" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xmhi0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 558.0
-offset_top = 88.0
-offset_right = -641.0
-offset_bottom = -81.0
+offset_left = 662.0
+offset_top = 31.0
+offset_right = -736.0
+offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_x85fr")
+theme_override_styles/panel = SubResource("StyleBoxTexture_gcmcy")
 
-[node name="Continue" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 197.0
-offset_right = 591.0
-offset_bottom = 354.0
-texture_normal = ExtResource("2_qp6fb")
-
-[node name="Settings" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_left = 106.0
-offset_top = 370.0
-offset_right = 593.0
-offset_bottom = 527.0
-texture_normal = ExtResource("3_7akkw")
-
-[node name="Endgame" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 543.0
-offset_right = 591.0
-offset_bottom = 700.0
-texture_normal = ExtResource("4_w5f6b")
-
-[node name="Endturn" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 717.0
-offset_right = 591.0
-offset_bottom = 874.0
-texture_normal = ExtResource("5_87awh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_x85fr")
-}
-
-[node name="Settings" parent="." instance=ExtResource("8_w5f6b")]
+[node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -364.5
+offset_right = 347.5
+offset_bottom = 364.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jl8xs")
 
-[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Panel/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Panel/Endgame" to="." method="_on_endgame_pressed"]
-[connection signal="pressed" from="Panel/Endturn" to="." method="_on_endturn_pressed"]
+[node name="X" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1215.0
+offset_top = 120.0
+offset_right = -589.0
+offset_bottom = -831.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_1xtef")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 703.0
+offset_top = 79.0
+offset_right = 989.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("4_xmhi0")
+theme_override_font_sizes/font_size = 54
+text = "What's Up"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1015.99994
+offset_top = 35.0
+offset_right = 1087.0
+offset_bottom = 164.0
+rotation = 0.3351032
+theme_override_fonts/font = ExtResource("4_xmhi0")
+theme_override_font_sizes/font_size = 128
+text = "?"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1085.0002
+offset_top = 76.00003
+offset_right = 1138.0002
+offset_bottom = 173.00003
+rotation = 0.6981317
+theme_override_fonts/font = ExtResource("4_xmhi0")
+theme_override_font_sizes/font_size = 96
+text = "?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -239.5
+offset_right = 243.5
+offset_bottom = 239.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 46
+
+[node name="Continue" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_xw83q")
+
+[node name="End Game" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_0akjr")
+
+[node name="End Turn" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_capb0")
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/End Game" to="." method="_on_end_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/End Turn" to="." method="_on_end_turn_pressed"]
