@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0hnx6dei8ax7"]
 
 [ext_resource type="Script" uid="uid://u8y525sqhdbb" path="res://scripts/turn_transition.gd" id="1_quhmu"]
-[ext_resource type="FontFile" uid="uid://ykv65caaf2og" path="res://assets/font/JelloStone-YqKz8.ttf" id="2_l1orn"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="2_l1orn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ibm6"]
 font = ExtResource("2_l1orn")
@@ -25,7 +25,7 @@ script = ExtResource("1_quhmu")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0.16470589, 0.34901962, 0.49803922)
+color = Color(0, 0.16470589, 0.34901962, 0.76862746)
 
 [node name="TurnLabel" type="Label" parent="."]
 layout_mode = 1

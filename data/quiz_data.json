@@ -1,152 +1,152 @@
 [
   {
-	"question": "Secara de facto, ITB didirikan pada tahun...",
+	"question": "ITB was de facto established in the year...",
 	"choices": ["1924", "1959", "1920"],
 	"answer": 2
   },
   {
-	"question": "Ibu kota Sumatra utara adalah...",
+	"question": "The capital city of North Sumatra is...",
 	"choices": ["Medan", "Palembang", "Padang"],
 	"answer": 0
   },
   {
-	"question": "Merah + kuning + Biru =...",
-	"choices": ["Ungu", "Cokelat", "Krem"],
+	"question": "Red + Yellow + Blue = ...",
+	"choices": ["Purple", "Brown", "Cream"],
 	"answer": 1
   },
   {
-	"question": "Ada berapa jurusan dalam fakultas seni rupa dan desain itb?",
+	"question": "How many departments are there in the Faculty of Art and Design (FSRD) ITB?",
 	"choices": ["5", "6", "3"],
 	"answer": 0
   },
   {
-	"question": "Planet manakah di Tata Surya yang memiliki suhu permukaan paling panas?",
-	"choices": ["Venus", "Merkurius", "Mars"],
+	"question": "Which planet in the Solar System has the hottest surface temperature?",
+	"choices": ["Venus", "Mercury", "Mars"],
 	"answer": 0
   },
   {
-	"question": "Apa simbol kimia untuk unsur Emas (Gold)?",
+	"question": "What is the chemical symbol for the element Gold?",
 	"choices": ["Ag", "Fe", "Au"],
 	"answer": 2
   },
   {
-	"question": "Ibu kota negara Australia adalah...",
+	"question": "The capital city of Australia is...",
 	"choices": ["Sydney", "Melbourne", "Canberra"],
 	"answer": 2
   },
   {
-	"question": "Siapakah dewa laut dalam mitologi Yunani kuno?",
+	"question": "Who is the sea god in ancient Greek mythology?",
 	"choices": ["Zeus", "Poseidon", "Hades"],
 	"answer": 1
   },
   {
-	"question": "Samudra terluas dan terdalam dunia adalah...",
-	"choices": ["Samudra Atlantik", "Samudra Hindia", "Samudra Pasifik"],
-	"answer": 2
+	"question": "The largest and deepest ocean in the world is...",
+	"choices": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+	"answer": 0
   },
   {
-	"question": "Satuan Internasional pada gaya adalah?",
+	"question": "The International System (IS) unit for force is...?",
 	"choices": ["Watt", "Joule", "Newton"],
 	"answer": 2
   },
   {
-	"question": "Benua terkecil di dunia adalah...",
-	"choices": ["Asia", "Eropa", "Australia"],
+	"question": "The smallest continent in the world is...",
+	"choices": ["Asia", "Europe", "Australia"],
 	"answer": 2
   },
   {
-	"question": "Pulau terbesar di dunia (bukan benua) adalah...",
-	"choices": ["Pulau Kalimantan", "Pulau Papua", "Greenland"],
+	"question": "The largest island in the world (not a continent) is...",
+	"choices": ["Kalimantan", "Papua", "Greenland"],
 	"answer": 2
   },
   {
-	"question": "Unsur paling melimpah pada atmosfer bumi adalah...",
-	"choices": ["Oksigen", "Karbon Dioksida", "Nitrogen"],
+	"question": "The most abundant element in the Earth's atmosphere is...",
+	"choices": ["Oxygen", "Carbon Dioxide", "Nitrogen"],
 	"answer": 2
   },
   {
-	"question": "Negara manakah yang memiliki penduduk terbanyak?",
-	"choices": ["India", "Tiongkok (China)", "Amerika Serikat"],
+	"question": "Which country has the largest population?",
+	"choices": ["India", "China", "United States"],
 	"answer": 0
   },
   {
-	"question": "Apa nama zat hijau pada tumbuhan yang berfungsi menangkap energi cahaya matahari?",
-	"choices": ["Karoten", "Xantofil", "Klorofil"],
+	"question": "What is the name of the green substance in plants that functions to capture sunlight energy?",
+	"choices": ["Carotene", "Xanthophyll", "Chlorophyll"],
 	"answer": 2
   },
   {
-	"question": "Cabang ilmu fisika yang mempelajari tentang gerakan benda dan penyebabnya adalah...",
-	"choices": ["Termodinamika", "Optik", "Mekanika"],
+	"question": "The branch of physics that studies the movement of objects and its causes is...",
+	"choices": ["Thermodynamics", "Optics", "Mechanics"],
 	"answer": 2
   },
   {
-	"question": "Alat komunikasi yang ditemukan oleh Samuel Morse pada tahun 1837 adalah...",
-	"choices": ["Telepon", "Radio", "Telegraf"],
+	"question": "The communication device invented by Samuel Morse in 1837 is...",
+	"choices": ["Telephone", "Radio", "Telegraph"],
 	"answer": 2
   },
   {
-	"question": "Satuan ukuran untuk energi panas dalam Sistem Internasional (SI) adalah...",
-	"choices": ["Celcius", "Watt", "Joule"],
+	"question": "The unit of measurement for heat energy in the International System (SI) is...",
+	"choices": ["Celsius", "Watt", "Joule"],
 	"answer": 2
   },
   {
-	"question": "Siapakah tokoh Yunani Kuno yang dikenal sebagai 'Bapak Kedokteran'?",
-	"choices": ["Plato", "Hippokrates", "Aristoteles"],
+	"question": "Who is the ancient Greek figure known as the 'Father of Medicine'?",
+	"choices": ["Plato", "Hippocrates", "Aristotle"],
 	"answer": 1
   },
   {
-	"question": "Mata uang resmi yang digunakan di Jepang adalah...",
+	"question": "The official currency used in Japan is...",
 	"choices": ["Won", "Yen", "Yuan"],
 	"answer": 1
   },
   {
-	"question": "Jenis awan yang sering membawa hujan lebat atau badai petir adalah...",
-	"choices": ["Sirus", "Stratus", "Kumulonimbus"],
+	"question": "The type of cloud that often brings heavy rain or thunderstorms is...",
+	"choices": ["Cirrus", "Stratus", "Altostratus"],
 	"answer": 2
   },
   {
-	"question": "Teknik seni rupa yang menggunakan serpihan kertas, kain, atau bahan lain yang ditempelkan disebut...",
-	"choices": ["Fresko", "Kolase", "Mozaik"],
+	"question": "The art technique that uses pieces of paper, cloth, or other materials attached to a surface is called...",
+	"choices": ["Fresco", "Collage", "Mosaic"],
 	"answer": 1
   },
   {
-	"question": "Peristiwa Revolusi Perancis, yang menggulingkan monarki, dimulai pada tahun...",
+	"question": "The French Revolution, which overthrew the monarchy, began in the year...",
 	"choices": ["1776", "1789", "1804"],
 	"answer": 1
   },
   {
-	"question": "Proses perubahan wujud zat dari padat menjadi gas tanpa melewati fase cair disebut...",
-	"choices": ["Kondensasi", "Peleburan", "Menyublim"],
+	"question": "The process of a substance changing from a solid state directly into a gas state without passing through the liquid phase is called...",
+	"choices": ["Condensation", "Melting", "Sublimation"],
 	"answer": 2
   },
   {
-	"question": "Bahasa resmi utama yang digunakan di Meksiko adalah...",
-	"choices": ["Portugis", "Perancis", "Spanyol"],
+	"question": "The main official language used in Mexico is...",
+	"choices": ["Portuguese", "French", "Spanish"],
 	"answer": 2
   },
   {
-	"question": "Alat ukur cuaca yang digunakan untuk mengukur kecepatan angin adalah...",
-	"choices": ["Barometer", "Higrometer", "Anemometer"],
+	"question": "The weather measuring tool used to measure wind speed is...",
+	"choices": ["Barometer", "Hygrometer", "Anemometer"],
 	"answer": 2
   },
   {
-	"question": "Lapisan ozon... terletak di lapisan atmosfer...",
-	"choices": ["Troposfer", "Stratosfer", "Mesosfer"],
+	"question": "The ozone layer that protects Earth from ultraviolet radiation is located in the atmospheric layer...",
+	"choices": ["Troposphere", "Stratosphere", "Mesosphere"],
 	"answer": 1
   },
   {
-	"question": "Aliran seni rupa yang menekankan pada emosi yang intens adalah...",
-	"choices": ["Ekspresionisme", "Kubisme", "Impresionisme"],
+	"question": "The art movement that emphasizes intense emotions and distortion of form to convey subjective feelings is...",
+	"choices": ["Expressionism", "Cubism", "Impressionism"],
 	"answer": 0
   },
   {
-	"question": "Seni tradisional Jepang dalam merangkai bunga adalah...",
+	"question": "The traditional Japanese art of flower arrangement is...",
 	"choices": ["Origami", "Bonsai", "Ikebana"],
 	"answer": 2
   },
   {
-	"question": "Berapa Jumlah anggota kelompok yang memuat game ini (Hwehehehe)...",
-	"choices": ["10", "13", "8"],
-	"answer": 1
+	"question": "What is the total number of members in the group that made this game (Hwehehehe)...",
+	"choices": ["10", "16", "13"],
+	"answer": 2
   }
 ]
