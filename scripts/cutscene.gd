@@ -1,7 +1,7 @@
 extends Control
 
 var cutscenes = []
-var durations = [3.0, 3.5, 4.0, 6.5, 5.0, 5.0, 3.5, 5.0, 6.0, 4.0, 7.0, 6.0]
+var durations = [3.0, 3.5, 4.0, 6.5, 5.0, 5.0, 3.5, 5.0, 9.0, 4.0, 7.0, 6.0]
 var index := 0
 var is_transitioning := false
 

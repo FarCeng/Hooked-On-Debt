@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0aaqtuiqfh3a"]
+[gd_scene load_steps=25 format=3 uid="uid://c0aaqtuiqfh3a"]
 
 [ext_resource type="Script" uid="uid://cl4kwoepsbs0g" path="res://scripts/scene_menang.gd" id="1_1lq3t"]
 [ext_resource type="Texture2D" uid="uid://cakybly2e0ahx" path="res://assets/Image/cut scene/Cutscene menang 2.png" id="2_323d3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="6_thh3k"]
 [ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="7_vkniv"]
 [ext_resource type="AudioStream" uid="uid://k7nl38yp87pn" path="res://assets/Dub/[1 Menang]DC Hi there,  the payment is due today..mp3" id="8_ttrv7"]
+[ext_resource type="Texture2D" uid="uid://0dffj5xwtkt4" path="res://assets/Image/cut scene/Telp Debt Collector.png" id="8_vkniv"]
 [ext_resource type="AudioStream" uid="uid://dr54xodg162nu" path="res://assets/Dub/[2 Menang]DC So, you got the money.mp3" id="9_bonoi"]
 [ext_resource type="AudioStream" uid="uid://gs0r67j5lvte" path="res://assets/Dub/[4 menang]MC _ Yeah i got u.mp3" id="11_r58ct"]
 
@@ -30,10 +31,10 @@ texture = ExtResource("4_dluky")
 texture = ExtResource("4_dluky")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obl43"]
-texture = ExtResource("4_dluky")
+texture = ExtResource("8_vkniv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dkq5v"]
-texture = ExtResource("4_dluky")
+texture = ExtResource("8_vkniv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_na5qc"]
 texture = ExtResource("2_323d3")

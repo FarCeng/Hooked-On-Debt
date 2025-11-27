@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgeagx82to18k"]
+[gd_scene load_steps=31 format=3 uid="uid://dgeagx82to18k"]
 
 [ext_resource type="Script" uid="uid://cv2tnt8wpp1ej" path="res://scripts/Scene_kalah.gd" id="1_au0f3"]
 [ext_resource type="Texture2D" uid="uid://d3iunob5gdpxf" path="res://assets/Image/cut scene/Cutscene kalah 1.png" id="2_ovmul"]
@@ -10,9 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dsfij0l7f2l5v" path="res://assets/Image/skip button.png" id="5_ovmul"]
 [ext_resource type="AudioStream" uid="uid://csn7coyv7x6ym" path="res://assets/Dub/yophonelinging.mp3" id="7_mur4o"]
 [ext_resource type="AudioStream" uid="uid://b24ix5fuejgdu" path="res://assets/Dub/[1 Kalah]DC So, how is it.mp3" id="8_7sxqx"]
+[ext_resource type="Texture2D" uid="uid://0dffj5xwtkt4" path="res://assets/Image/cut scene/Telp Debt Collector.png" id="8_mguqm"]
 [ext_resource type="AudioStream" uid="uid://dje5jdwmardj" path="res://assets/Dub/[2 Kalah]DC Ya get the money.mp3" id="9_7bjsj"]
 [ext_resource type="AudioStream" uid="uid://bhylu1wpt55bn" path="res://assets/Dub/[4 kalah]MC _ Can.. can we make a new deal_.mp3" id="10_dlfkl"]
-[ext_resource type="AudioStream" uid="uid://b5gy4lmw0fsx8" path="res://assets/Dub/[3 Kalah]DC Nope, the deal was you paid for 2000 within 6 days.mp3" id="11_kt6h5"]
+[ext_resource type="AudioStream" uid="uid://bwj88kj2bjqn7" path="res://assets/Dub/[DC kalah] No, the deal was you paid for 300 within 6 days(1).mp3" id="12_mguqm"]
 [ext_resource type="AudioStream" uid="uid://qxpoepv671hg" path="res://assets/Dub/[4 Kalah]DC And if not, you know what happens next..mp3" id="13_euq3i"]
 [ext_resource type="AudioStream" uid="uid://2dlrk1pnhor6" path="res://assets/Dub/[5 Kalah]DC It is something that you wish would never happen..mp3" id="14_2nyxf"]
 [ext_resource type="Texture2D" uid="uid://dcsaoy4dnb4a0" path="res://assets/Image/pressed skip button.png" id="16_t5ncu"]
@@ -33,16 +34,16 @@ texture = ExtResource("3_3153u")
 texture = ExtResource("3_3153u")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brp0e"]
-texture = ExtResource("3_3153u")
+texture = ExtResource("8_mguqm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_msvpp"]
-texture = ExtResource("3_3153u")
+texture = ExtResource("8_mguqm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jemdt"]
-texture = ExtResource("3_3153u")
+texture = ExtResource("8_mguqm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5ncu"]
-texture = ExtResource("3_3153u")
+texture = ExtResource("8_mguqm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mguqm"]
 texture = ExtResource("4_gmufs")
@@ -325,14 +326,14 @@ offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Nope, the deal was you paid for 2000 within 6 days."
+text = "Nope, the deal was you paid for 300 within 6 days."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Cutscene 9"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene 9"]
-stream = ExtResource("11_kt6h5")
+stream = ExtResource("12_mguqm")
 
 [node name="Cutscene 10" type="Panel" parent="."]
 layout_mode = 1

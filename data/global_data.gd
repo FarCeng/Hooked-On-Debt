@@ -132,3 +132,4 @@ func reset() -> void:
 	coins = 0
 	attempts = attempts_per_turn
 	target_coins = 400
+	load_all_data()

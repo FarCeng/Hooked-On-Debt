@@ -11,6 +11,11 @@ signal finished(result: bool)
 @onready var lore_label: Label = $Succeed/LoreLabel
 @onready var name_label: Label = $Succeed/NameLabel
 
+@onready var bg_common: TextureRect = $Succeed/Common
+@onready var bg_uncommon: TextureRect = $Succeed/Uncommon
+@onready var bg_rare: TextureRect = $Succeed/Rare
+@onready var bg_legend: TextureRect = $Succeed/Legend
+
 # Peta nama ikan → tekstur preloaded
 var fish_texture_map := {
 	"Agus BRJS": preload("res://assets/images/fish/common/Agus BPJS.png"),
@@ -43,13 +48,21 @@ var current_result: bool = false
 
 func _ready() -> void:
 	visible = false
-
+	bg_common.visible = false
+	bg_uncommon.visible = false
+	bg_rare.visible = false
+	bg_legend.visible = false
 
 # Menampilkan hasil tangkapan
 func show_result(is_success: bool, fish_data: Dictionary = {}) -> void:
 	current_result = is_success
 	visible = true
-
+	
+	bg_common.visible = false
+	bg_uncommon.visible = false
+	bg_rare.visible = false
+	bg_legend.visible = false
+	
 	if is_success:
 		succeed_container.visible = true
 		fail_container.visible = false
@@ -73,7 +86,25 @@ func show_result(is_success: bool, fish_data: Dictionary = {}) -> void:
 			else:
 				push_error("Texture untuk '%s' tidak ditemukan." % image_id)
 				fish_texture.texture = null
-
+		var rarity = fish_data.get("rarity", "common")
+		
+		match rarity:
+			"common":
+				bg_common.visible = true
+				
+			"uncommon":
+				bg_uncommon.visible = true
+				
+			"rare":
+				bg_rare.visible = true
+				
+			"legend":
+				bg_legend.visible = true
+				
+			_:
+				# Fallback jika rarity tidak dikenal
+				bg_common.visible = true
+		
 		print("Hasil: Sukses | Ikan:", fish_data)
 	else:
 		succeed_container.visible = false

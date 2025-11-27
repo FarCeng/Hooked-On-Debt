@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjhatjeo5fuka"]
+
+[ext_resource type="Script" uid="uid://12um6mhcdgt3" path="res://scripts/lobby.gd" id="1_omrgh"]
+[ext_resource type="Texture2D" uid="uid://1dur7ln5i6ey" path="res://assets/Image/Main Menu.png" id="1_pc087"]
+[ext_resource type="Texture2D" uid="uid://duuj0khawij81" path="res://assets/Image/start page buttons/Variant6.png" id="2_pc087"]
+[ext_resource type="Texture2D" uid="uid://b4l5eehygfsq8" path="res://assets/images/lobby/objective.png" id="3_ncsg4"]
+[ext_resource type="Texture2D" uid="uid://biovbtknwmybw" path="res://assets/Image/start page buttons/pressed1.png" id="3_nqcc7"]
+[ext_resource type="Texture2D" uid="uid://dfcyvnost75t6" path="res://assets/images/lobby/placeholder.png" id="4_07nfq"]
+[ext_resource type="FontFile" uid="uid://cvp3j0rwcp6ri" path="res://assets/font/JelloStone-YqKz8.ttf" id="4_omrgh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ncsg4"]
+font = ExtResource("4_omrgh")
+font_size = 50
+font_color = Color(0.99215686, 0.81960785, 0.29803923, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.13725491)
+shadow_offset = Vector2(1, 4)
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omrgh")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_pc087")
+
+[node name="LowOpacityBG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.16470589, 0.34901962, 0.6666667)
+
+[node name="Objective" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 394.0
+offset_right = 1228.0
+offset_bottom = 683.0
+texture = ExtResource("3_ncsg4")
+
+[node name="PlaceHolder" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1253.0
+offset_top = 81.0
+offset_right = 1824.0
+offset_bottom = 303.0
+texture = ExtResource("4_07nfq")
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1249.0
+offset_top = 765.0
+offset_right = 1761.0
+offset_bottom = 899.0
+texture_normal = ExtResource("2_pc087")
+texture_pressed = ExtResource("3_nqcc7")
+
+[node name="TargetCoin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 542.0
+offset_right = 389.0
+offset_bottom = 593.0
+text = "400"
+label_settings = SubResource("LabelSettings_ncsg4")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
