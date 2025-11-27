@@ -6,7 +6,7 @@ var max_turns := 6
 var attempts := 5
 var attempts_per_turn := 5
 var coins := 0
-var target_coins := 400
+var target_coins := 300
 
 
 # Variabel untuk menyimpan data dari file JSON
@@ -131,5 +131,5 @@ func reset() -> void:
 	turn = 1
 	coins = 0
 	attempts = attempts_per_turn
-	target_coins = 400
+	target_coins = 300
 	load_all_data()

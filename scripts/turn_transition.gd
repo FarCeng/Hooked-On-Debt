@@ -18,7 +18,7 @@ func _ready() -> void:
 func show_turn(current_turn: int, max_turns: int) -> void:
 	is_clickable = false
 	modulate.a = 0.0
-	turn_label.text = "TURN %s / %s" % [current_turn, max_turns]
+	turn_label.text = "DAY %s / %s" % [current_turn, max_turns]
 	visible = true
 	
 	prompt_label.visible = false

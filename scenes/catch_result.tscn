@@ -66,6 +66,7 @@ offset_bottom = 595.0
 texture = ExtResource("4_7mewt")
 
 [node name="Rare" type="TextureRect" parent="Succeed"]
+visible = false
 layout_mode = 0
 offset_right = 469.0
 offset_bottom = 595.0
